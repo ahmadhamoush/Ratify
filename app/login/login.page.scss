@@ -37,7 +37,7 @@
 }
 
 .logo {
-    font-size: 40px;
+    font-size: 30px;
     position: absolute;
     left: 2%;
     top: 2%;
@@ -56,7 +56,24 @@
 }
 
 .inputs {
-    margin: 40px 20px;
+    margin: 0 20px;
+    padding-top: 110px;
+}
+
+.input ion-input {
+    --placeholder-color: #2EA5BF; //currentColor
+}
+
+.input ion-label {
+    color: #2EA5BF;
+}
+
+.input ion-icon {
+    margin-top: 22px;
+    margin-right: 20px;
+    margin-left: 0;
+    color: #2EA5BF;
+    transform: scale(0.9);
 }
 
 .signin {
@@ -74,10 +91,7 @@
 }
 
 .btn {
-    position: absolute;
-    top: 70%;
-    left: 10%;
-    --width: 100%;
+    position: relative;
 }
 
 ion-label p {
@@ -106,6 +120,53 @@ ion-label h2 {
     color: #2EA5BF;
 }
 
-@media screen and (max-width: 375px) {}
+ion-item.item-has-focus>ion-label {
+    color: #2EA5BF !important;
+}
 
-@media screen and (min-width: 450px) {}
+.options ion-icon {
+    margin: 0 20px;
+    transform: scale(1.8);
+}
+
+@media (min-width: 615px) {
+    .logo {
+        text-align: center;
+        left: 0;
+        top: 0;
+    }
+    .round-bottom {
+        top: -300px;
+        width: 2064px;
+        height: 680px;
+        left: -248px;
+    }
+    .text {
+        width: 100%;
+    }
+    .btn {
+        width: 50%;
+    }
+    .people {
+        position: absolute;
+        left: 10%;
+        top: -30%;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+        transform: scale(1.5);
+    }
+    .signin {
+        --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+        color: #eee;
+        padding-top: 200px;
+        border-radius: 100%;
+    }
+    .options {
+        padding-top: 200px;
+    }
+    .inputs {
+        width: 50%;
+    }
+}

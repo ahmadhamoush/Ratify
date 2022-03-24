@@ -1,10 +1,5 @@
 <ion-content>
 
-
-
-
-
-
     <div class="container">
 
         <div class="round-bottom"></div>
@@ -23,22 +18,37 @@
                 <ion-label>Sign In</ion-label>
             </ion-item>
             <ion-item class="input">
+                <ion-icon slot="start" name="person-outline"></ion-icon>
                 <ion-label position="floating">Username</ion-label>
-                <ion-input></ion-input>
+                <ion-input>
+
+                </ion-input>
             </ion-item>
             <ion-item class="input">
+                <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type='password'></ion-input>
             </ion-item>
-            <ion-button class='btn' color="dark" size="large" shape='round'>Login</ion-button>
+            <ion-button class='btn' color="dark" expand="'full" shape=''>Login</ion-button>
+
+        </div>
+        <div class="options">
             <ion-item lines="none">
                 <ion-label>
                     <p>Dont have an account?</p>
                     <h2>Sign up right now!</h2>
                 </ion-label>
             </ion-item>
-
+            <ion-item style='margin-bottom:20px' lines="full">
+                <ion-label>
+                    <p style="font-size:10px; margin: 5px 0;">or</p>
+                    <h2>Sign up with</h2>
+                </ion-label>
+            </ion-item>
+            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-google"></ion-icon>
         </div>
+
 
 
 
