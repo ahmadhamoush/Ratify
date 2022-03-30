@@ -42,12 +42,11 @@
 /* People */
 
 .people {
-    top: -50%;
-    bottom: 0;
-    margin: auto;
-    position: absolute;
-    left: -18%;
-    right: 0;
+    margin-top: -50%;
+    margin-bottom: 0;
+    position: relative;
+    margin-left: -18%;
+    margin-right: 0;
     min-height: 100vh;
     height: 550px;
     width: 130vw;
@@ -213,10 +212,12 @@ div.item-native {
     bottom: 0;
     position: absolute;
     margin: 20px;
+    margin-left: 10px;
     text-align: center;
     justify-content: center;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    width: 92%;
 }
 
 .text {
@@ -250,6 +251,25 @@ ion-item {
     align-items: center;
 }
 
+//smaller devices
+@media (max-width :415px) and (min-width: 278px) {
+    .people {
+        margin-top: -35%;
+        margin-bottom: 0;
+        position: relative;
+        margin-left: 2%;
+        margin-right: 0;
+        height: 550px;
+        width: 80vw;
+        overflow: hidden;
+        transform: scale(1.2);
+    }
+    .text {
+        width: 100%;
+    }
+}
+
+// big devices
 @media (min-width: 615px) {
     .logo {
         text-align: center;
@@ -269,13 +289,9 @@ ion-item {
         width: 97%;
     }
     .people {
-        position: absolute;
-        left: 10%;
-        top: -30%;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        width: 500px;
+        position: relative;
+        margin: auto;
+        width: 370px;
         transform: scale(1.5);
     }
 }
