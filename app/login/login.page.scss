@@ -25,7 +25,6 @@
     overflow: hidden;
     text-align: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
@@ -90,6 +89,7 @@
     text-transform: uppercase;
     color: #2EA5BF;
     padding-bottom: 10px;
+    margin-top: 20px;
 }
 
 .btn {
@@ -129,6 +129,28 @@ ion-item.item-has-focus>ion-label {
 .options ion-icon {
     margin: 0 20px;
     transform: scale(1.8);
+}
+
+.move {
+    transform: translate(-470px);
+    transition: 1s;
+}
+
+#show {
+    transition: 1s;
+}
+
+.startPlace {
+    transform: translate(370px);
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.moveLeft {
+    transform: translate(-170px);
 }
 
 @media (max-width :415px) and (min-width: 278px) {}

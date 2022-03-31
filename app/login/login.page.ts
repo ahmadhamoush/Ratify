@@ -13,16 +13,28 @@ export class LoginPage implements OnInit {
 
   onClickSignup() {
 
-    // var bg = document.getElementById('bg');
-    // var hide = document.getElementById('hide');
-    // var show = document.getElementById('show');
-    // bg.style.top = '-20px';
-    // bg.style.height = '800px';
-    // bg.style.zIndex= '2';
-    // hide.style.display = 'none';
-    // show.style.display ="block";
-    this.route.navigate(['/sign-up']);
+    var hide = document.getElementById('hide');
+
+    var show = document.getElementById('show');
+    hide.classList.toggle('move');
+
+    setTimeout(()=>{
+      hide.style.display = 'none';
+    }, 500);
+
+    // show.classList.toggle('moveLeft');
+    setTimeout(()=>{
+      show.classList.toggle('show');
+    },500)
+    
+    setTimeout(()=>{
+      show.classList.toggle('startPlace');
+    },800)
+    
+
+     
 }
+ 
 
   ngOnInit() {
   }
