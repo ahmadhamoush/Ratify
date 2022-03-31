@@ -36,7 +36,7 @@
                 <ion-item lines="none">
                     <ion-label>
                         <p>Dont have an account?</p>
-                        <ion-button (click)="onClickSignup()" expand="block" fill="clear" shape="round">
+                        <ion-button (click)="onClickSignupAnimation()" expand="block" fill="clear" shape="round">
                             <h2>Sign Up Right now!</h2>
                         </ion-button>
                     </ion-label>
@@ -60,28 +60,28 @@
                 <ion-item class="input">
                     <ion-icon slot="start" name="person-outline"></ion-icon>
                     <ion-label position="floating">Username</ion-label>
-                    <ion-input>
+                    <ion-input [(ngModel)]='username'>
 
                     </ion-input>
                 </ion-item>
                 <ion-item class="input">
                     <ion-icon slot="start" name="person-outline"></ion-icon>
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input type="email">
+                    <ion-input type="email" [(ngModel)]='email'>
 
                     </ion-input>
                 </ion-item>
                 <ion-item class="input">
                     <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
                     <ion-label position="floating">Password</ion-label>
-                    <ion-input type='password'></ion-input>
+                    <ion-input type='password' [(ngModel)]='password'></ion-input>
                 </ion-item>
                 <ion-item class="input">
                     <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
                     <ion-label position="floating">Confirm Password</ion-label>
-                    <ion-input type='password'></ion-input>
+                    <ion-input type='password' [(ngModel)]='passwod_confirm'></ion-input>
                 </ion-item>
-                <ion-button class='btn' color="dark" expand="'full" shape=''>Sign Up</ion-button>
+                <ion-button (click)="onClickSignup()" class='btn' color="dark " expand=" 'full" shape=' '>Sign Up</ion-button>
 
             </div>
         </div>

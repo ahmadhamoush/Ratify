@@ -132,8 +132,8 @@ ion-item.item-has-focus>ion-label {
 }
 
 .move {
-    transform: translate(-470px);
-    transition: 1s;
+    transform: translate(-970px);
+    transition: 2s;
 }
 
 #show {
@@ -141,7 +141,7 @@ ion-item.item-has-focus>ion-label {
 }
 
 .startPlace {
-    transform: translate(370px);
+    transform: translate(600px);
     display: none;
 }
 
@@ -150,7 +150,7 @@ ion-item.item-has-focus>ion-label {
 }
 
 .moveLeft {
-    transform: translate(-170px);
+    transform: translate(-370px);
 }
 
 @media (max-width :415px) and (min-width: 278px) {}
