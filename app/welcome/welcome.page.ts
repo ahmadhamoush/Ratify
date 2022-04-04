@@ -11,7 +11,7 @@ export class WelcomePage implements OnInit {
   constructor() {
     
    }
-   userFlow = history.state.data;
+   userFlow = history.state.username;
 
 
   ngOnInit() {

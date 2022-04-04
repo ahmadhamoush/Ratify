@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,14 +11,19 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private http: HttpClient ,private route: Router) { }
-  
-
+  signupForm: FormGroup;
   username : string;
   email : string;
   password : string;
+  confirm_pass : string;
+
+  constructor(private http: HttpClient ,private route: Router) { }
+  
+ 
+ 
   
   onClickSignup(){
+    var response_message;
     var headers = new HttpHeaders();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -29,19 +34,32 @@ export class LoginPage implements OnInit {
       "email" : this.email,
       "password" : this.password, 
   }
-  
-  console.log(user.username);
+
   console.log(JSON.stringify(user));
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var confirm_pass = document.getElementById('confirm_pass');
+        var usertaken = document.getElementById('user_taken');
+        var emailtaken = document.getElementById('email_taken');
 
- 
-    this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers}).subscribe((response: any)=>{
-      console.log(response);
-      console.log('Success');
+      this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers}).subscribe((response: any)=>{
+      if(response.status == 'taken'){
+        console.log('Username or email already taken.')
+        response_message = 'Fail';
+        username.classList.remove('ng-valid');
+        username.classList.remove('ion-valid');
+        username.classList.add('ng-invalid');
+        usertaken.style.display = 'block';
+      }
+  
+      else{
+        response_message = 'Success';
+        this.route.navigate(['/welcome'],{state:{username:this.username}});
+      }
+      console.log(response_message);
     })
-    this.route.navigate(['/welcome'],{state:{username:this.username}});
+   
   }
-
-
 
   onClickSignupAnimation() {
 
@@ -69,6 +87,9 @@ export class LoginPage implements OnInit {
  
 
   ngOnInit() {
+
+    
+
   }
   
    

@@ -270,7 +270,7 @@ ion-item {
 }
 
 // big devices
-@media (min-width: 615px) {
+@media (min-width: 500px) {
     .logo {
         text-align: center;
         left: 0;
@@ -291,6 +291,7 @@ ion-item {
     .people {
         position: relative;
         margin: auto;
+        bottom: 150px;
         width: 370px;
         transform: scale(1.5);
     }

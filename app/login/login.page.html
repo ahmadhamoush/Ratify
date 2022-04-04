@@ -57,31 +57,41 @@
                 <ion-item class='signin' lines="none">
                     <ion-label>Sign Up</ion-label>
                 </ion-item>
-                <ion-item class="input">
-                    <ion-icon slot="start" name="person-outline"></ion-icon>
-                    <ion-label position="floating">Username</ion-label>
-                    <ion-input [(ngModel)]='username'>
+                <form (ngSubmit)="onClickSignup()" ngNativeValidate>
+                    <ion-item class="input">
+                        <ion-icon slot="start" name="person-outline"></ion-icon>
+                        <ion-label position="floating">Username</ion-label>
+                        <ion-input id='username' required [ngModelOptions]="{standalone:true}" [(ngModel)]='username'>
 
-                    </ion-input>
-                </ion-item>
-                <ion-item class="input">
-                    <ion-icon slot="start" name="person-outline"></ion-icon>
-                    <ion-label position="floating">Email</ion-label>
-                    <ion-input type="email" [(ngModel)]='email'>
+                        </ion-input>
 
-                    </ion-input>
-                </ion-item>
-                <ion-item class="input">
-                    <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
-                    <ion-label position="floating">Password</ion-label>
-                    <ion-input type='password' [(ngModel)]='password'></ion-input>
-                </ion-item>
-                <ion-item class="input">
-                    <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
-                    <ion-label position="floating">Confirm Password</ion-label>
-                    <ion-input type='password' [(ngModel)]='passwod_confirm'></ion-input>
-                </ion-item>
-                <ion-button (click)="onClickSignup()" class='btn' color="dark " expand=" 'full" shape=' '>Sign Up</ion-button>
+                    </ion-item>
+
+                    <ion-item id="user_taken" style="display: none;">
+                        <div style="color:red;">Username or email already taken!</div>
+                    </ion-item>
+                    <ion-item class="input">
+                        <ion-icon slot="start" name="person-outline"></ion-icon>
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input [ngModelOptions]="{standalone:true}" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" type="email" [(ngModel)]='email'>
+
+                        </ion-input>
+                    </ion-item>
+
+                    <ion-item class="input">
+                        <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input id="password" [ngModelOptions]="{standalone:true}" required type='password' [(ngModel)]='password'></ion-input>
+                    </ion-item>
+
+                    <ion-item class="input">
+                        <ion-icon slot='start' name="lock-closed-outline"></ion-icon>
+                        <ion-label position="floating">Confirm Password</ion-label>
+                        <ion-input id="confirm_pass" [ngModelOptions]="{standalone:true}" required type='password' [(ngModel)]='passwod_confirm'></ion-input>
+                    </ion-item>
+                    <ion-button type='submit' class='btn' color="dark " expand=" 'full" shape=' '>Sign Up</ion-button>
+
+                </form>
 
             </div>
         </div>

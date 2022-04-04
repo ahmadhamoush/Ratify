@@ -1,9 +1,36 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>welcome {{userFlow}}</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+
+
+    <div class="container">
+        <div id="bg" class="round-bottom"></div>
+
+        <div class="welcome">
+            <ion-item lines="none" class="logo">
+                <ion-label>
+                    Ratify
+                </ion-label>
+
+            </ion-item>
+            <ion-item lines='none'>
+                <ion-label>
+                    <h2 class="signin">Welcome<br><br>{{userFlow}},</h2>
+                </ion-label>
+            </ion-item>
+            <ion-item lines='none'>
+                <ion-icon class="profile" name="person-circle"></ion-icon>
+            </ion-item>
+        </div>
+        <div class="inputs">
+            <ion-item class="input">
+                <ion-icon slot="start" name="person-outline"></ion-icon>
+                <ion-label position="floating">What is your name?</ion-label>
+                <ion-input>
+                </ion-input>
+            </ion-item>
+            <ion-button class='btn' color="dark" expand="'full" shape=''>Get Started</ion-button>
+        </div>
+    </div>
+
 
 </ion-content>
