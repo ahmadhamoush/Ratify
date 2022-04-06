@@ -22,11 +22,12 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
  $username = $request->username; 
  $email = $request->email; 
  $password = $request->password;
+ $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
 }
   //posting data
  $_POST['username'] = $username;
  $_POST['email'] = $email;
- $_POST['password'] = $password;
+ $_POST['password'] = $hashed_pass;
 
 //setting session variable username
  $_SESSION['username'] = $username;
@@ -44,13 +45,13 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
  	echo $user_taken;
 
   //inserting user data to database
- }else if(isset($username) && isset($email ) && isset($password)){
+ }else if(isset($username) && isset($email ) && isset($hashed_pass)){
 	$query = $mysqli->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-	$query->bind_param("sss", $username, $email, $password);
+	$query->bind_param("sss", $username, $email, $hashed_pass);
 	$query->execute();
 	$user_details['username'] = $username;
 	$user_details['email'] = $email;
-	$user_details['password'] = $password;
+	$user_details['password'] = $hashed_pass;
   $user_details['sessionid'] = session_id();
 	$user_details = json_encode($user_details);
 	echo $user_details;
