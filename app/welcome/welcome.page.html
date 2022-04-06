@@ -21,15 +21,17 @@
                 <ion-icon class="profile" name="person-circle"></ion-icon>
             </ion-item>
         </div>
-        <div class="inputs">
+
+        <form (ngSubmit)="getStarted()" ngNativeValidate class="inputs">
             <ion-item class="input">
                 <ion-icon slot="start" name="person-outline"></ion-icon>
                 <ion-label position="floating">What is your name?</ion-label>
-                <ion-input>
+                <ion-input [ngModelOptions]="{standalone:true}" [(ngModel)]='name' required>
                 </ion-input>
             </ion-item>
-            <ion-button class='btn' color="dark" expand="'full" shape=''>Get Started</ion-button>
-        </div>
+            <ion-button type="submit" class='btn' color="dark" expand="'full" shape=''>Get Started</ion-button>
+        </form>
+
     </div>
 
 

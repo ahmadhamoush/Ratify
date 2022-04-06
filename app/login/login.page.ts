@@ -11,22 +11,17 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class LoginPage implements OnInit {
 
-  signupForm: FormGroup;
   username : string;
   email : string;
   password : string;
   confirm_pass : string;
 
   constructor(private http: HttpClient ,private route: Router) { }
-  
- 
  
   
   onClickSignup(){
     var response_message;
     var headers = new HttpHeaders();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Origin', '*');
 
      const user = {
@@ -35,14 +30,13 @@ export class LoginPage implements OnInit {
       "password" : this.password, 
   }
 
-  console.log(JSON.stringify(user));
         var username = document.getElementById('username');
         var password = document.getElementById('password');
         var confirm_pass = document.getElementById('confirm_pass');
         var usertaken = document.getElementById('user_taken');
         var emailtaken = document.getElementById('email_taken');
-
-      this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers}).subscribe((response: any)=>{
+       
+      this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       if(response.status == 'taken'){
         console.log('Username or email already taken.')
         response_message = 'Fail';
@@ -51,9 +45,11 @@ export class LoginPage implements OnInit {
         username.classList.add('ng-invalid');
         usertaken.style.display = 'block';
       }
-  
       else{
+        var session_id = response.sessionid;
+        sessionStorage.setItem("session_id", session_id);
         response_message = 'Success';
+        console.log(response);
         this.route.navigate(['/welcome'],{state:{username:this.username}});
       }
       console.log(response_message);

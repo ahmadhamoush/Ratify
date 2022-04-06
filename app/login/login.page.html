@@ -57,11 +57,11 @@
                 <ion-item class='signin' lines="none">
                     <ion-label>Sign Up</ion-label>
                 </ion-item>
-                <form (ngSubmit)="onClickSignup()" ngNativeValidate>
+                <form (ngSubmit)="onClickSignup()" method="post" action="./welcome" ngNativeValidate>
                     <ion-item class="input">
                         <ion-icon slot="start" name="person-outline"></ion-icon>
                         <ion-label position="floating">Username</ion-label>
-                        <ion-input id='username' required [ngModelOptions]="{standalone:true}" [(ngModel)]='username'>
+                        <ion-input name="username" id='username' required [ngModelOptions]="{standalone:true}" [(ngModel)]='username'>
 
                         </ion-input>
 
