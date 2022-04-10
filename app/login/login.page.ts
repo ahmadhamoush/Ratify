@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,7 +13,10 @@ export class LoginPage implements OnInit {
   username : string;
   email : string;
   password : string;
-  confirm_pass : string;
+  passwod_confirm : string;
+
+  login_username : string;
+  login_password : string;
 
   constructor(private http: HttpClient ,private route: Router) { }
  
@@ -27,34 +29,57 @@ export class LoginPage implements OnInit {
      const user = {
       "username" : this.username,
       "email" : this.email,
-      "password" : this.password, 
+      "password" : this.password,
+      "confirm_pass" : this.passwod_confirm, 
   }
 
-        var username = document.getElementById('username');
-        var password = document.getElementById('password');
-        var confirm_pass = document.getElementById('confirm_pass');
-        var usertaken = document.getElementById('user_taken');
-        var emailtaken = document.getElementById('email_taken');
+        var signup_status = document.getElementById('signup_status');
+     
        
       this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       if(response.status == 'taken'){
-        console.log('Username or email already taken.')
+        console.log('Username or email already taken.');
+        signup_status.innerText = 'Username or email\nalready taken.'
         response_message = 'Fail';
-        username.classList.remove('ng-valid');
-        username.classList.remove('ion-valid');
-        username.classList.add('ng-invalid');
-        usertaken.style.display = 'block';
+      }
+      else if(response.status == "password confirmation failed"){
+        signup_status.innerText = 'Passwords dont match.';
+        response_message = 'Fail';
       }
       else{
         var session_id = response.sessionid;
         sessionStorage.setItem("session_id", session_id);
-        response_message = 'Success';
+        response_message = response.status;
         console.log(response);
-        this.route.navigate(['/welcome'],{state:{username:this.username}});
+        this.route.navigate(['/welcome'],{state:{username: response.username}});
       }
       console.log(response_message);
     })
    
+  }
+  onClickLogin(){
+  var login_status = document.getElementById('login_status');
+   var headers = new HttpHeaders();
+   headers.append('Access-Control-Allow-Origin', "*");
+
+   const user = {
+    "username" : this.login_username,
+    "password" : this.login_password,
+   }
+
+   this.http.post("http://127.0.0.1/ratify/login.php", JSON.stringify(user), {headers:headers, withCredentials :true}).subscribe((response:any)=>{
+     console.log(response);
+     if(response.status == "incorrect pass"){
+      login_status.innerText = "incorrect pass";
+     }
+     else if(response.status == "user not found"){
+       login_status.innerText ="user not found";
+     } else if(response.status == "success"){
+       this.route.navigate(['/welcome'],{state:{username: response.username}});
+     }
+    
+   })
+    
   }
 
   onClickSignupAnimation() {

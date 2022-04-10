@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Session } from 'protractor';
+import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Platform } from '@ionic/angular';
+ 
 
+
+
+const IMAGE_DIR = 'stored-images';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.page.html',
@@ -10,29 +17,107 @@ import { Session } from 'protractor';
 export class WelcomePage implements OnInit {
 
   name : string;
-  constructor(private http : HttpClient) {
+  image : File;
+ 
+ constructor(private http : HttpClient, private route : Router, private platform:Platform) {
     
    }
-   userFlow = history.state.username;
+   url ='./assets/banner.jpg'
+   onselectedFile(e){
+     if(e.target.files){
+       var reader = new FileReader();
+       reader.readAsDataURL(e.target.files[0]);
+       reader.onload=(event:any)=>{
+         this.url=event.target.result;
+         document.getElementById('pp').style.display ="block";
+         document.getElementById('camera_icon').style.display="none";
+         document.getElementById('profile_icon').style.display="none";
+       }
+     }
+   }
+   user_name = history.state.username;
     
    getStarted(){
     const data ={
       "name" : this.name,
-      "username" : this.userFlow,
+      "username" : this.user_name,
    };
-    var headers = new HttpHeaders();
-    // headers.append("Accept", 'application/json');
-    // headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    // headers.append('Set-Cookie', 'PHPSESSID=' + localStorage.getItem('session_id') + "; path=/");
 
+   const formData = new FormData();
+   const blobFile = new Blob([this.image], { type: this.image.type });
+   formData.append('file', blobFile, "filename");
+
+   var headers = new HttpHeaders();
+   headers.append('Access-Control-Allow-Origin', '*');
+   
+
+  //  this.http.post('http://127.0.0.1/ratify/image_upload.php', formData, {headers:headers}).subscribe((response : any)=>{
+  //    console.log(response);
+  //  })
+
+    
     this.http.post('http://127.0.0.1/ratify/get_started.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       console.log(response);
-      
+      // this.route.navigate(['/profile']);
+    });
 
-    })
    }
+
+
+   async selectImage(){
+     const image = await Camera.getPhoto({
+       quality :90,
+       allowEditing: false,
+       resultType: CameraResultType.Uri,
+       source: CameraSource.Photos
+     });
+     console.log(image);
+
+     if(image){
+      this.saveImage(image);
+     }
+   }
+
+   async saveImage(photo: Photo){
+     const base64Data = await this.readAsBase64(photo);
+     console.log(base64Data);
+
+     const fileName = new Date().getTime() + '.jpeg';
+     const savedFile = await Filesystem.writeFile({
+       directory: Directory.Data,
+       path: `${IMAGE_DIR}/${fileName}`,
+       data: base64Data
+     });
+     console.log('saved:' , savedFile);
+     
+   }
+
+   async readAsBase64(photo : Photo){
+    if(this.platform.is('hybrid')){
+      const file = await Filesystem.readFile({
+        path:photo.path
+      });
+      return file.data;
+    }
+    else{
+      const response = await fetch(photo.webPath);
+      const blob = await response.blob();
+
+      return await this.convertBlobToBase64(blob) as string;
+    }
+   }
+   convertBlobToBase64 = (blob : Blob)=> new Promise((resolve,reject)=>{
+     const reader = new FileReader;
+      reader.onerror = reject;
+      reader.onload = () =>{
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(blob);
+
+   });
   ngOnInit() {
+ 
   }
+ 
 
 }

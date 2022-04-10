@@ -153,14 +153,18 @@ ion-item.item-has-focus>ion-label {
     transform: translate(-370px);
 }
 
+#login_status {
+    color: red;
+    font-size: 20px;
+}
+
+#signup_status {
+    color: red;
+}
+
 @media (max-width :415px) and (min-width: 278px) {}
 
 @media (min-width: 500px) {
-    .logo {
-        text-align: center;
-        left: 0;
-        top: 0;
-    }
     .round-bottom {
         top: -300px;
         width: 2064px;
