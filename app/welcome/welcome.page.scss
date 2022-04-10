@@ -170,10 +170,8 @@ ion-label h2 {
 #pp {
     height: 60px;
     width: 60px;
-    margin-right: 8px;
-    max-width: 100% !important;
-    max-height: 100% !important;
     object-fit: cover;
+    margin-right: 8px;
 }
 
 @media (max-width :415px) and (min-width: 278px) {}

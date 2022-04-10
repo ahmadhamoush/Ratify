@@ -22,8 +22,12 @@ export class WelcomePage implements OnInit {
  constructor(private http : HttpClient, private route : Router, private platform:Platform) {
     
    }
-   url ='./assets/banner.jpg'
+   url ='';
+   selected_file = null;
    onselectedFile(e){
+     console.log(e); 
+     this.selected_file = e.target.files[0];
+     console.log(this.selected_file);
      if(e.target.files){
        var reader = new FileReader();
        reader.readAsDataURL(e.target.files[0]);
@@ -44,16 +48,15 @@ export class WelcomePage implements OnInit {
    };
 
    const formData = new FormData();
-   const blobFile = new Blob([this.image], { type: this.image.type });
-   formData.append('file', blobFile, "filename");
+   formData.append('file', this.selected_file);
 
    var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
    
 
-  //  this.http.post('http://127.0.0.1/ratify/image_upload.php', formData, {headers:headers}).subscribe((response : any)=>{
-  //    console.log(response);
-  //  })
+   this.http.post('http://127.0.0.1/ratify/image_upload.php', formData, {headers:headers, withCredentials:true}).subscribe((response : any)=>{
+     console.log(response);
+   })
 
     
     this.http.post('http://127.0.0.1/ratify/get_started.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{

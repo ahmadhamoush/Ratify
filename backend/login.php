@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include('db_info.php');
 	
 //setting headers
@@ -51,7 +50,7 @@ else{
 }
 
 //sending back user information
-$user['username'] = $username;
+$user['username'] = $_SESSION['username'];
 $user_data = json_encode($user);
 echo $user_data;
 ?>
