@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.round-bottom {
+    border-top-left-radius: 50% 150px !important;
+    border-top-right-radius: 50% 150px !important;
+    overflow: hidden;
+    position: absolute;
+    /* Ellipse 1 */
+    bottom: 0;
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    /* Ellipse 1 */
+    width: 864px;
+    height: 380px;
+    left: -248px;
+}
+
+.container {
+    width: 100%;
+    height: 100% !important;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 40px;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 100%;
+    text-align: left;
+}
+
+ion-item {
+    //     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    --ion-item-color: #2EA5BF;
+}

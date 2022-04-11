@@ -133,16 +133,12 @@ ion-label h2 {
     background-color: #2EA5BF;
 }
 
-.profile:hover {}
-
 .camera {
     margin: auto;
     position: absolute;
     transition: 0.8s;
     filter: invert(1);
 }
-
-.camera:hover {}
 
 .upload:hover>.camera,
 .upload:active {

@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
      else if(response.status == "user not found"){
        login_status.innerText ="user not found";
      } else if(response.status == "success"){
-       this.route.navigate(['/welcome'],{state:{username: response.username}});
+       this.route.navigate(['./homepage/profile']);
      }
     
    })

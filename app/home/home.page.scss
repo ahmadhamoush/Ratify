@@ -252,17 +252,13 @@ ion-item {
 }
 
 //smaller devices
-@media (max-width :415px) and (min-width: 278px) {
+@media (max-width :495px) and (min-width: 278px) {
     .people {
-        margin-top: -35%;
-        margin-bottom: 0;
         position: relative;
-        margin-left: 2%;
-        margin-right: 0;
-        height: 550px;
-        width: 80vw;
-        overflow: hidden;
-        transform: scale(1.2);
+        margin: auto;
+        bottom: 150px;
+        width: 370px;
+        transform: scale(1.1);
     }
     .text {
         width: 100%;
