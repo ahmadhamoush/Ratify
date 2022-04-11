@@ -61,7 +61,7 @@ export class WelcomePage implements OnInit {
     
     this.http.post('http://127.0.0.1/ratify/get_started.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       console.log(response);
-      // this.route.navigate(['/profile']);
+      this.route.navigate(['homepage/profile']);
     });
 
    }

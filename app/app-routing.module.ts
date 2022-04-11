@@ -21,7 +21,23 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./tabs/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'homepage',
+    loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./tabs/search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'feed',
+    loadChildren: () => import('./tabs/feed/feed.module').then( m => m.FeedPageModule)
+  },
+  {
+    path: 'leaderboard',
+    loadChildren: () => import('./tabs/leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
   },
 ];
 
