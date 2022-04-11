@@ -15,8 +15,8 @@
     background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     /* Ellipse 1 */
     width: 864px;
-    height: 380px;
-    left: -248px;
+    height: 480px;
+    left: -220px;
 }
 
 .container {
@@ -41,4 +41,25 @@
 ion-item {
     //     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     --ion-item-color: #2EA5BF;
+}
+
+.image-container {
+    position: absolute;
+    top: -210px;
+    right: -30px;
+    transform: scale(3);
+    border-radius: 100%;
+    transition: 0.8s;
+    background-color: #2EA5BF;
+}
+
+.image-container:hover,
+.image-container:active {
+    box-shadow: 0 0 30px lightblue;
+}
+
+#img {
+    height: 60px;
+    width: 70px;
+    object-fit: cover;
 }
