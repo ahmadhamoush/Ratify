@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,35 +13,35 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
   },
   {
     path: 'profile',
-    loadChildren: () => import('./tabs/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/tabs/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'homepage',
-    loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
+    loadChildren: () => import('./pages/tabs/homepage/homepage.module').then( m => m.HomepagePageModule)
   },
   {
     path: 'search',
-    loadChildren: () => import('./tabs/search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () => import('./pages/tabs/search/search.module').then( m => m.SearchPageModule)
   },
   {
     path: 'feed',
-    loadChildren: () => import('./tabs/feed/feed.module').then( m => m.FeedPageModule)
+    loadChildren: () => import('./pages/tabs/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
     path: 'leaderboard',
-    loadChildren: () => import('./tabs/leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
+    loadChildren: () => import('./pages/tabs/leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
   },
   {
     path: 'settings-modal',
-    loadChildren: () => import('./settings-modal/settings-modal.module').then( m => m.SettingsModalPageModule)
+    loadChildren: () => import('./pages/settings-modal/settings-modal.module').then( m => m.SettingsModalPageModule)
   },
 ];
 

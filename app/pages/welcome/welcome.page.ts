@@ -4,11 +4,9 @@ import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
- 
-
-
 
 const IMAGE_DIR = 'stored-images';
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.page.html',
@@ -59,7 +57,7 @@ export class WelcomePage implements OnInit {
    })
 
     
-    this.http.post('http://127.0.0.1/ratify/get_started.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+    this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       console.log(response);
       this.route.navigate(['homepage/profile']);
     });

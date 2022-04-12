@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
-import { SettingsModalPage } from 'src/app/settings-modal/settings-modal.page';
+import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
+import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,17 +17,29 @@ export class ProfilePage implements OnInit {
   username : string;
  
 
-  constructor(private http : HttpClient, private modalCtrl : ModalController) { }
+  constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService) { }
   
    
   ngOnInit() {
-    this.http.get('http://127.0.0.1/ratify/get_image.php', {withCredentials:true}).subscribe((response:any)=>{
-    this.displayedImage = response['image'];
-    this.name = response['name'];
-    this.username = response['username'];
-    console.log(response);
+
+    this.user.getUsername()
+    .subscribe(data => {
+        this.username = data;
     });
-  }
+
+    this.user.getName()
+    .subscribe(data => {
+        this.name = data;
+    });
+
+    this.user.getImage()
+    .subscribe(data => {
+        this.displayedImage = data;
+    });
+
+
+
+    }
   settings(){
    this.modalCtrl.create({
      component: SettingsModalPage,

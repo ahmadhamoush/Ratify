@@ -18,11 +18,24 @@ ion-item {
     --ion-item-color: #2EA5BF;
 }
 
-ion-list ion-item {
+.options {
     //     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
-    transition: 0.8s;
+    transition: 0.4s;
+    font-size: 20px;
 }
 
-ion-list ion-item:hover {
-    transform: scale(1.05);
+.options:hover {
+    transform: scale(1.02);
+}
+
+.input {
+    justify-content: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.hide {
+    display: none;
 }

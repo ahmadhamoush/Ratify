@@ -15,4 +15,13 @@ export class SettingsModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  showUserInput(){
+    var user_input = document.getElementById('username_input');
+    user_input.classList.toggle('hide');
+  }
+  showNameInput(){
+    var name_input = document.getElementById('name_input');
+    name_input.classList.toggle('hide');
+  }
+
 }

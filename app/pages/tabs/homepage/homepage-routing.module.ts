@@ -10,19 +10,19 @@ const routes: Routes = [
     children: [
       {
         path: 'profile',
-        loadChildren: () => import('../tabs/profile/profile.module').then( m => m.ProfilePageModule)
+        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
       },
       {
         path: 'search',
-        loadChildren: () => import('../tabs/search/search.module').then( m => m.SearchPageModule)
+        loadChildren: () => import('../search/search.module').then( m => m.SearchPageModule)
       },
       {
         path: 'feed',
-        loadChildren: () => import('../tabs/feed/feed.module').then( m => m.FeedPageModule)
+        loadChildren: () => import('../feed/feed.module').then( m => m.FeedPageModule)
       },
       {
         path: 'leaderboard',
-        loadChildren: () => import('../tabs/leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
+        loadChildren: () => import('../leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
       },
       {
         path: '',
