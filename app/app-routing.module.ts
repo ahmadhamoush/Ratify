@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'leaderboard',
     loadChildren: () => import('./tabs/leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
   },
+  {
+    path: 'settings-modal',
+    loadChildren: () => import('./settings-modal/settings-modal.module').then( m => m.SettingsModalPageModule)
+  },
 ];
 
 @NgModule({

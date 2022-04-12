@@ -8,6 +8,10 @@
                 <ion-label>
                     Ratify
                 </ion-label>
+            </ion-item>
+            <ion-item class="settings" lines="none">
+
+                <ion-icon (click)="settings()" style="transform: scale(1.2);" name="settings-outline"></ion-icon>
 
             </ion-item>
             <ion-fab horizontal="center" slot="fixed">
@@ -15,7 +19,9 @@
                     <img src={{displayedImage}} id="img" src="" alt="">
                 </ion-fab-button>
             </ion-fab>
-
+            <ion-item lines="none" class="name">
+                <ion-label>{{name}}</ion-label>
+            </ion-item>
         </div>
     </div>
 </ion-content>

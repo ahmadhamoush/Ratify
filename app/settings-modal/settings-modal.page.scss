@@ -1,0 +1,28 @@
+ion-modal.stack-modal {
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    --backdrop-opacity: var(--ion-backdrop-opacity, 0.32);
+}
+
+.settings {
+    transform: scale(2);
+    margin: 20px 10px;
+    cursor: pointer;
+}
+
+ion-list ion-list-header {
+    margin-bottom: 10px;
+    color: #2EA5BF;
+}
+
+ion-item {
+    --ion-item-color: #2EA5BF;
+}
+
+ion-list ion-item {
+    //     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    transition: 0.8s;
+}
+
+ion-list ion-item:hover {
+    transform: scale(1.05);
+}
