@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
-import { Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';  
 
 const IMAGE_DIR = 'stored-images';
 
@@ -16,10 +16,12 @@ export class WelcomePage implements OnInit {
 
   name : string;
   image : File;
+  user_name : string;
  
  constructor(private http : HttpClient, private route : Router, private platform:Platform) {
-    
-   }
+  }
+  
+   
    url ='';
    selected_file = null;
    onselectedFile(e){
@@ -37,7 +39,6 @@ export class WelcomePage implements OnInit {
        }
      }
    }
-   user_name = history.state.username;
     
    getStarted(){
    
@@ -114,6 +115,7 @@ export class WelcomePage implements OnInit {
    });
   ngOnInit() {
  
+    this.user_name = history.state.username;
   }
  
 
