@@ -29,8 +29,9 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
 
     $verify_pass = password_verify($old_pass, $hashed_pass);
 
+     if($verify_pass){
     if($old_pass != $new_pass){
-        if($verify_pass){
+       
         if(isset($old_pass) && isset($new_pass)){
     $query2 = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
     $query2->bind_param("ss",$new_hashed ,$_SESSION['username']);
@@ -41,12 +42,12 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
     }
  
     }else{
-    $user_details['status'] = 'Incorrect Old Password';
+    $user_details['status'] = 'Your new password is the same as the old one';
     $user_details = json_encode($user_details);
     echo $user_details;
     }
     }else{
-    $user_details['status'] = 'Your new password is the same as the old one';
+    $user_details['status'] = 'Incorrect Old Password';
     $user_details = json_encode($user_details);
     echo $user_details;
 }

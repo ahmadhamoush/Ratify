@@ -38,6 +38,15 @@ if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) {
     $data = ['success' => false, 'message' => 'There was an error uploading the file, please try again!'];
     echo json_encode( $data );
 }
+}else{
+    $no_profile = 'no-profile.jpg';
+    $query2 = $mysqli->prepare("UPDATE users SET image = ? WHERE username = ?");
+    $username = $_SESSION['username'];
+    $query2->bind_param("ss", $no_profile, $username);
+    $query2->execute();
+    $response = ['image_upload' => false, 'message' => 'No Profile Uploaded'];
+    echo json_encode( $response );
+
 }
 
 

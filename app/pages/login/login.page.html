@@ -65,13 +65,9 @@
                         <ion-icon slot="start" name="person-outline"></ion-icon>
                         <ion-label position="floating">Username</ion-label>
                         <ion-input name="username" id='username' required [ngModelOptions]="{standalone:true}" [(ngModel)]='username'>
-
                         </ion-input>
 
                     </ion-item>
-
-
-
 
                     <ion-item class="input">
                         <ion-icon slot="start" name="person-outline"></ion-icon>
@@ -97,13 +93,17 @@
 
                 </form>
 
+                <ion-item lines="none">
+                    <ion-label>
+                        <p>Have an account?</p>
+                        <ion-button (click)="onClickLoginAnimation()" expand="block" fill="clear" shape="round">
+                            <h2>Login Now!</h2>
+                        </ion-button>
+                    </ion-label>
+                </ion-item>
+
             </div>
         </div>
-
-
-
-
-
 
     </div>
 

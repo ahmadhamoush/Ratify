@@ -37,7 +37,8 @@ header("Access-Control-Allow-Credentials: true");}
 }
 }
 else{
-    echo "No user found";
+    $user_details['user'] = 'not found';
+    echo json_encode($user_details);
   
 }
 ?>

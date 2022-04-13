@@ -136,6 +136,11 @@ ion-item.item-has-focus>ion-label {
     transition: 2s;
 }
 
+.move_back {
+    transform: translate(970px);
+    transition: 2s;
+}
+
 #show {
     transition: 1s;
 }
@@ -143,6 +148,11 @@ ion-item.item-has-focus>ion-label {
 .startPlace {
     transform: translate(600px);
     display: none;
+}
+
+.endtPlace {
+    transform: translate(-600px);
+    display: block;
 }
 
 .show {

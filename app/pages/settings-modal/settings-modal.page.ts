@@ -92,7 +92,7 @@ updatePassword(){
    var status_error_message = document.getElementById('status_error_message2');
    this.http.post('http://127.0.0.1/ratify/update_password.php',JSON.stringify(password), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
     console.log(response);
-    if(response['status'] == 'success'){
+    if(response['status'] == 'Password Changed'){
       status_success_message.innerHTML = response['status'];
       status_success.style.display = 'block';
       status_error.style.display = 'none';
@@ -110,10 +110,21 @@ logout(){
   var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
 
-   this.http.post('http://127.0.0.1/ratify/logout.php', {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+   this.http.post('http://127.0.0.1/ratify/logout.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
     console.log(response);
     this.close();
     this.route.navigate(['home']);
+  });
+}
+
+delete(){
+  var headers = new HttpHeaders();
+   headers.append('Access-Control-Allow-Origin', '*');
+
+   this.http.post('http://127.0.0.1/ratify/delete.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+    console.log(response);
+    this.close();
+    // this.route.navigate(['home']);
   });
 }
 }

@@ -36,7 +36,7 @@
                 <ion-label>Change Name</ion-label>
             </ion-item>
 
-            <form (ngSubmit)="updateName()">
+            <form (ngSubmit)="updateName()" ngNativeValidate>
                 <div id="name_input" class="hide">
                     <ion-item lines="none" class="input">
                         <ion-label position="fixed">Enter new</ion-label>
@@ -55,7 +55,7 @@
             <ion-item (click)='showPasswordInput()' lines="none" class="options">
                 <ion-label>Change Password</ion-label>
             </ion-item>
-            <form (ngSubmit)="updatePassword()">
+            <form (ngSubmit)="updatePassword()" ngNativeValidate>
                 <div id="password_input" class="hide">
                     <ion-item lines="none" class="input">
                         <ion-label position="fixed">Enter old</ion-label>
@@ -76,11 +76,20 @@
             </form>
         </div>
 
-        <ion-item (click)='logout()' lines="none" class="options">
-            <ion-label>Logout</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="options">
-            <ion-label color="danger">Delete Account</ion-label>
-        </ion-item>
+        <form (ngSubmit)="logout()">
+            <ion-button type="submit" fill="clear">
+                <ion-item lines="none" class="options">
+                    <ion-label>Logout</ion-label>
+                </ion-item>
+            </ion-button>
+        </form>
+
+        <form (ngSubmit)="delete()">
+            <ion-button type="submit" fill="clear">
+                <ion-item lines="none" class="options">
+                    <ion-label color="danger">Delete Account</ion-label>
+                </ion-item>
+            </ion-button>
+        </form>
     </ion-list>
 </ion-content>

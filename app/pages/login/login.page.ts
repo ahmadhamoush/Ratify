@@ -105,6 +105,10 @@ export class LoginPage implements OnInit {
 
      
 }
+
+onClickLoginAnimation() {
+   this.route.navigate(['home']);
+}
  
 
   ngOnInit() {
