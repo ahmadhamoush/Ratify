@@ -40,11 +40,7 @@ export class WelcomePage implements OnInit {
    user_name = history.state.username;
     
    getStarted(){
-    const data ={
-      "name" : this.name,
-      "username" : this.user_name,
-   };
-
+   
    const formData = new FormData();
    formData.append('file', this.selected_file);
 
@@ -57,7 +53,7 @@ export class WelcomePage implements OnInit {
    })
 
     
-    this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(data), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+    this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(this.name), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       console.log(response);
       this.route.navigate(['homepage/profile']);
     });

@@ -13,20 +13,40 @@
                 <ion-label>Change Username</ion-label>
             </ion-item>
 
-            <div id="username_input" class="hide">
-                <ion-item lines="none" class="input">
-                    <ion-label position="fixed">Enter new</ion-label>
-                    <ion-input placeholder="username" id="password" [ngModelOptions]="{standalone:true}" required [(ngModel)]='Username'></ion-input>
-                </ion-item>
-                <ion-button type='submit' class='btn' color="dark " expand=" 'full" shape=' '>Change</ion-button>
-            </div>
+            <form (ngSubmit)="updateUsername()">
+                <div id="username_input" class="hide">
+                    <ion-item lines="none" class="input">
+                        <ion-label position="fixed">Enter new</ion-label>
+                        <ion-input placeholder="username" id="password" [ngModelOptions]="{standalone:true}" required [(ngModel)]='username'></ion-input>
+                    </ion-item>
+                    <ion-button type='submit' class='btn' color="dark " expand=" 'full" shape=' '>Change</ion-button>
+                </div>
+            </form>
         </div>
 
         <div class="container">
-            <ion-item (click)='showNameInput()' lines="none" class="options">
+
+            <ion-item (click)="showNameInput()" lines="none" class="options">
+                <ion-label>Change Name</ion-label>
+            </ion-item>
+
+            <form (ngSubmit)="updateName()">
+                <div id="name_input" class="hide">
+                    <ion-item lines="none" class="input">
+                        <ion-label position="fixed">Enter new</ion-label>
+                        <ion-input placeholder="name" id="password" [ngModelOptions]="{standalone:true}" required [(ngModel)]='name'></ion-input>
+                    </ion-item>
+                    <ion-button type='submit' class='btn' color="dark " expand=" 'full" shape=' '>Change</ion-button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container">
+            <ion-item (click)='showPasswordInput()' lines="none" class="options">
                 <ion-label>Change Password</ion-label>
             </ion-item>
-            <div id="name_input" class="hide">
+            <div id="password_input" class="hide">
                 <ion-item lines="none" class="input">
                     <ion-label position="fixed">Enter old</ion-label>
                     <ion-input type="password" placeholder="password" id="password" [ngModelOptions]="{standalone:true}" required [(ngModel)]='old_pass'></ion-input>

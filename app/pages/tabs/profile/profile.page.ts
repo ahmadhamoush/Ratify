@@ -22,6 +22,28 @@ export class ProfilePage implements OnInit {
    
   ngOnInit() {
 
+    this.fetchUserData();
+    
+    }
+  settings(){
+   this.modalCtrl.create({
+     component: SettingsModalPage,
+     swipeToClose:true,
+   }).then(res =>{
+     res.present();
+   })
+  }
+
+  refresh(event){
+    this.fetchUserData();
+    setTimeout(() => {
+      console.log('Page Refreshed');
+      event.target.complete();
+    }, 500);
+  
+  }
+
+  fetchUserData(){
     this.user.getUsername()
     .subscribe(data => {
         this.username = data;
@@ -36,17 +58,6 @@ export class ProfilePage implements OnInit {
     .subscribe(data => {
         this.displayedImage = data;
     });
-
-
-
-    }
-  settings(){
-   this.modalCtrl.create({
-     component: SettingsModalPage,
-     swipeToClose:true,
-   }).then(res =>{
-     res.present();
-   })
   }
 
 }
