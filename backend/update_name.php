@@ -32,7 +32,7 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
     $query->bind_param("ss", $name, $_SESSION['username']);
     $query->execute();
     $user_details['name'] =$name;
-    $user_details['sessionid'] = session_id();
+    $user_details['status'] = 'success';
     $user_details = json_encode($user_details);
     echo $user_details;
 }

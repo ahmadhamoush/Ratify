@@ -40,20 +40,37 @@ export class SettingsModalPage implements OnInit {
   updateName(){
     var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
-
-    
    this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(this.name), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
     console.log(response);
-   
+    var status_success2 = document.getElementById('status_success2');
+     var status_success_message2 = document.getElementById('status_success_message2');
+      status_success_message2.innerHTML = response['status'];
+      status_success2.style.display = 'block';
   });
 
   }
+  
   updateUsername(){
     var headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');
     this.http.post('http://127.0.0.1/ratify/update_username.php',JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
      console.log(response);
+     var status_success = document.getElementById('status_success');
+     var status_success_message = document.getElementById('status_success_message');
+     var status_error = document.getElementById('status_error');
+     var status_error_message = document.getElementById('status_error_message');
+     if(response['status'] == 'success'){
+      status_success_message.innerHTML = response['status'];
+      status_success.style.display = 'block';
+      status_error.style.display = 'none';
+     }
+     else{
+      status_error_message.innerHTML = response['status'];
+      status_error.style.display = 'block';
+      status_success.style.display = 'none';
+     }
     
+
    });
   
 

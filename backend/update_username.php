@@ -27,9 +27,16 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
  $query2->store_result();
  
  //checking if user is taken
- if($query2->num_rows>0){
-    $user_details['status'] = 'taken';
+ if($query2->num_rows>0 AND $username != $_SESSION['username']){
+  $user_details['username'] = $username;
+    $user_details['status'] = 'Username is taken :(';
   $user_details = json_encode($user_details);
+    echo $user_details;
+   }
+   else if($username == $_SESSION['username']){
+    $user_details['username'] = $username;
+    $user_details['status'] = "Can't change your own username!";
+    $user_details = json_encode($user_details);
     echo $user_details;
    }
 
