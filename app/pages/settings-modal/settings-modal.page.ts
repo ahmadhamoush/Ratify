@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { Router } from '@angular/router';
 
@@ -18,7 +19,8 @@ export class SettingsModalPage implements OnInit {
   new_pass : string;
   user_name : string;
 
-  constructor(private modalCtrl : ModalController, private http : HttpClient, private user : GetUserDetailsService, private route : Router) { }
+  constructor(private modalCtrl : ModalController, private http : HttpClient, 
+    private user : GetUserDetailsService, private route : Router, private alertCtrl : AlertController) { }
  
   ngOnInit() {
      this.user.getUsername().subscribe(data =>{
@@ -106,25 +108,64 @@ updatePassword(){
   });
 }
 
-logout(){
-  var headers = new HttpHeaders();
-   headers.append('Access-Control-Allow-Origin', '*');
-
-   this.http.post('http://127.0.0.1/ratify/logout.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
-    console.log(response);
-    this.close();
-    this.route.navigate(['home']);
+async logout(){
+  let alert = this.alertCtrl.create({
+    header: 'Logout',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+          this.close(); 
+        }
+      },
+      {
+        text: 'Logout',
+        handler: () => {
+           var headers = new HttpHeaders();
+            headers.append('Access-Control-Allow-Origin', '*');
+            this.http.post('http://127.0.0.1/ratify/logout.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+            console.log(response);
+            this.close();
+            this.route.navigate(['home']);
+       });
+        }
+      }
+    ]
   });
+(await alert).present();
+  
 }
 
-delete(){
-  var headers = new HttpHeaders();
-   headers.append('Access-Control-Allow-Origin', '*');
-
-   this.http.post('http://127.0.0.1/ratify/delete.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
-    console.log(response);
-    this.close();
-    // this.route.navigate(['home']);
+async delete(){
+  let alert = this.alertCtrl.create({
+    header: 'Delete Account',
+    message: 'Are you sure you want to permanently delete this account?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+          this.close();
+        }
+      },
+      {
+        text: 'Delete',
+        handler: () => {
+          var headers = new HttpHeaders();
+          headers.append('Access-Control-Allow-Origin', '*');
+          this.http.post('http://127.0.0.1/ratify/delete.php', JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+            console.log(response);
+            this.close();
+            this.route.navigate(['home']);
   });
+        }
+      }
+    ]
+  });
+  (await alert).present();
+
 }
 }
