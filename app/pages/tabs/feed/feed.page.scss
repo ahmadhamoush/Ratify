@@ -56,23 +56,36 @@ ion-item {
     --ion-item-color: white;
 }
 
-.image-container {
+.usercard {
     position: absolute;
-    top: -190px;
-    right: -30px;
-    transform: scale(3);
-    border-radius: 10%;
     transition: 0.8s;
-    background-color: #2EA5BF;
+    --ion-item-color: white;
+    color: white;
+    border-radius: 20px;
+    position: absolute;
+    margin: auto;
+    width: 271px;
+    height: 271px;
+    left: 70px;
+    top: 102px;
+    box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+    max-width: 100%;
 }
 
-.image-container:hover,
-.image-container:active {
-    box-shadow: 0 0 10px lightblue;
+.usercard:hover,
+.usercard:active {
+    // box-shadow: 0 0 10px lightblue;
+}
+
+ion-card-header {
+    position: absolute;
+    top: 50;
+    z-index: 1;
+    margin: 5px;
 }
 
 #img {
-    height: 60px;
-    width: 70px;
     object-fit: cover;
 }

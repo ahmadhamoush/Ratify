@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings-modal',
@@ -20,7 +21,8 @@ export class SettingsModalPage implements OnInit {
   user_name : string;
 
   constructor(private modalCtrl : ModalController, private http : HttpClient, 
-    private user : GetUserDetailsService, private route : Router, private alertCtrl : AlertController) { }
+    private user : GetUserDetailsService, private route : Router, private alertCtrl : AlertController,
+    private toastCtrl :ToastController) { }
  
   ngOnInit() {
      this.user.getUsername().subscribe(data =>{
@@ -30,6 +32,15 @@ export class SettingsModalPage implements OnInit {
   close(){
     this.modalCtrl.dismiss();
   }
+  async toast(message, color){
+    const toast = this.toastCtrl.create({
+      message : message,
+      duration : 2000,
+      color: color
+    });
+    (await toast).present();
+  }
+  
 
   showUserInput(){
     var user_input = document.getElementById('username_input');
@@ -45,14 +56,11 @@ export class SettingsModalPage implements OnInit {
   }
 
   updateName(){
-    var headers = new HttpHeaders();
+   var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
    this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(this.name), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
     console.log(response);
-    var status_success2 = document.getElementById('status_success2');
-     var status_success_message2 = document.getElementById('status_success_message2');
-      status_success_message2.innerHTML = response['status'];
-      status_success2.style.display = 'block';
+    this.toast(response['status'], 'success');
   });
 
   }
@@ -62,20 +70,12 @@ export class SettingsModalPage implements OnInit {
     headers.append('Access-Control-Allow-Origin', '*');
     this.http.post('http://127.0.0.1/ratify/update_username.php',JSON.stringify(this.username), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
      console.log(response);
-     var status_success = document.getElementById('status_success');
-     var status_success_message = document.getElementById('status_success_message');
-     var status_error = document.getElementById('status_error');
-     var status_error_message = document.getElementById('status_error_message');
      if(response['status'] == 'success'){
-      status_success_message.innerHTML = response['status'];
-      status_success.style.display = 'block';
-      status_error.style.display = 'none';
+      this.toast(response['status'], 'success');
       this.user_name = response['new'];
      }
      else{
-      status_error_message.innerHTML = response['status'];
-      status_error.style.display = 'block';
-      status_success.style.display = 'none';
+      this.toast(response['status'], 'danger');
      }
    });
   
@@ -88,21 +88,13 @@ updatePassword(){
     "new_pass" : this.new_pass,
     "old_pass" : this.old_pass,
    }
-   var status_success = document.getElementById('status_success3');
-   var status_success_message = document.getElementById('status_success_message3');
-   var status_error = document.getElementById('status_error2');
-   var status_error_message = document.getElementById('status_error_message2');
    this.http.post('http://127.0.0.1/ratify/update_password.php',JSON.stringify(password), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
     console.log(response);
     if(response['status'] == 'Password Changed'){
-      status_success_message.innerHTML = response['status'];
-      status_success.style.display = 'block';
-      status_error.style.display = 'none';
+      this.toast(response['status'], 'success');
      }
      else{
-      status_error_message.innerHTML = response['status'];
-      status_error.style.display = 'block';
-      status_success.style.display = 'none';
+      this.toast(response['status'], 'danger');
      }
    
   });
@@ -128,6 +120,7 @@ async logout(){
             console.log(response);
             this.close();
             this.route.navigate(['home']);
+            this.toast('Logged Out Successfully', 'success');
        });
         }
       }
@@ -159,6 +152,7 @@ async delete(){
             console.log(response);
             this.close();
             this.route.navigate(['home']);
+            this.toast('User Permanently Deleted', 'danger');
   });
         }
       }
