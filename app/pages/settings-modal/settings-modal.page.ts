@@ -117,7 +117,6 @@ async logout(){
         role: 'cancel',
         handler: () => {
           console.log('Cancel clicked');
-          this.close(); 
         }
       },
       {

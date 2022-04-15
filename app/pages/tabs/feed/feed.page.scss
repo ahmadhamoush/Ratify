@@ -55,3 +55,24 @@ ion-item {
     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     --ion-item-color: white;
 }
+
+.image-container {
+    position: absolute;
+    top: -190px;
+    right: -30px;
+    transform: scale(3);
+    border-radius: 10%;
+    transition: 0.8s;
+    background-color: #2EA5BF;
+}
+
+.image-container:hover,
+.image-container:active {
+    box-shadow: 0 0 10px lightblue;
+}
+
+#img {
+    height: 60px;
+    width: 70px;
+    object-fit: cover;
+}

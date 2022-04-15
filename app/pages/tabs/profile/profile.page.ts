@@ -25,6 +25,9 @@ export class ProfilePage implements OnInit {
     this.fetchUserData();
     
     }
+    ionViewWillEnter(){
+      this.fetchUserData();
+    }
   settings(){
    this.modalCtrl.create({
      component: SettingsModalPage,

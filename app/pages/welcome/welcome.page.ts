@@ -56,7 +56,7 @@ export class WelcomePage implements OnInit {
     
     this.http.post('http://127.0.0.1/ratify/update_name.php',JSON.stringify(this.name), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
       console.log(response);
-      this.route.navigate(['homepage/profile']);
+      this.route.navigate(['homepage/feed']);
     });
 
    }

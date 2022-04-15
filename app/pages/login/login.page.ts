@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -18,10 +19,16 @@ export class LoginPage implements OnInit {
   login_username : string;
   login_password : string;
 
-  constructor(private http: HttpClient ,private route: Router) { }
+  constructor(private http: HttpClient ,private route: Router, private loadingCtrl : LoadingController) { }
  
   
-  onClickSignup(){
+ async onClickSignup(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Signing Up...',
+      duration: 500,
+    });
+    await loading.present();
+   
     var response_message;
     var headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');
@@ -33,10 +40,11 @@ export class LoginPage implements OnInit {
       "confirm_pass" : this.passwod_confirm, 
   }
 
-        var signup_status = document.getElementById('signup_status');
+      var signup_status = document.getElementById('signup_status');
      
        
       this.http.post('http://127.0.0.1/ratify/sign_up.php',JSON.stringify(user), {headers:headers,withCredentials: true}).subscribe((response: any)=>{
+      loading.onDidDismiss();
       if(response.status == 'taken'){
         console.log('Username or email already taken.');
         signup_status.innerText = 'Username or email\nalready taken.'
@@ -54,11 +62,16 @@ export class LoginPage implements OnInit {
         this.route.navigate(['/welcome'],{state:{username: response.username}});
       }
       console.log(response_message);
-    })
+    });
    
   }
-  onClickLogin(){
-  var login_status = document.getElementById('login_status');
+  async onClickLogin(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Logging In...',
+      duration: 500,
+    });
+    await loading.present();
+   var login_status = document.getElementById('login_status');
    var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', "*");
 
@@ -69,18 +82,20 @@ export class LoginPage implements OnInit {
 
    this.http.post("http://127.0.0.1/ratify/login.php", JSON.stringify(user), {headers:headers, withCredentials :true}).subscribe((response:any)=>{
      console.log(response);
+      loading.onDidDismiss();
      if(response.status == "incorrect pass"){
       login_status.innerText = "incorrect pass";
      }
      else if(response.status == "user not found"){
        login_status.innerText ="user not found";
      } else if(response.status == "success"){
-       this.route.navigate(['./homepage/profile']);
+       this.route.navigate(['./homepage/feed']);
      }
     
    })
     
   }
+
 
   onClickSignupAnimation() {
 
