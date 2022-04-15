@@ -13,27 +13,22 @@
             </ion-item>
         </div>
 
-        <div>
-            <ion-card class='usercard' button='true'>
-                <ion-card-header>
-                    <ion-card-subtitle color="light">Chloe Smith</ion-card-subtitle>
-                    <ion-card-title color="light">@chloe_s</ion-card-title>
-                </ion-card-header>
 
+        <ion-card *ngFor="let user of usersFeed | slice:0:2" class='usercard' button='true'>
 
-                <ion-img id="img" src="./assets/img1.jpg"></ion-img>
-
-            </ion-card>
-            <!-- <ion-card class='usercard' button='true'>
-                <ion-card-header>
+            <div>
+                <!-- <ion-card-header>
                     <ion-card-subtitle color="light">{{user.name}}</ion-card-subtitle>
-                    <ion-card-title color="light">{{user.username}}</ion-card-title>
+                    <ion-card-title color="light">@{{user.username}}</ion-card-title>
                 </ion-card-header>
 
-
-                <ion-img id="img" src="{{user.user_image}}"></ion-img>
-
-            </ion-card> -->
-        </div>
+                <ion-img id="img" src="{{user.image}}"></ion-img> -->
+                <swiper>
+                    <ng-template swiperSlide>Slide 1</ng-template>
+                    <ng-template swiperSlide>Slide 3</ng-template>
+                    <ng-template swiperSlide>Slide 3</ng-template>
+                </swiper>
+            </div>
+        </ion-card>
     </div>
 </ion-content>

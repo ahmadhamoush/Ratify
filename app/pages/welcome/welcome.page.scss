@@ -156,6 +156,7 @@ ion-label h2 {
     transition: 0.8s;
     margin-bottom: 50px;
     background-color: #2EA5BF;
+    justify-content: center;
 }
 
 .upload:hover,
@@ -164,10 +165,10 @@ ion-label h2 {
 }
 
 #pp {
-    height: 60px;
-    width: 70px;
+    position: absolute;
     object-fit: cover;
-    margin-right: 8px;
+    max-width: 100%;
+    height: 100%;
 }
 
 @media (max-width :415px) and (min-width: 278px) {}

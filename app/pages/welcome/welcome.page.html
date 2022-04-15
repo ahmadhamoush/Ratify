@@ -19,13 +19,13 @@
             </ion-item>
 
             <form (ngSubmit)="getStarted()" ngNativeValidate class="inputs" enctype="multipart/form-data">
-                <div style="position:relative; margin-right:50px">
+                <div style="position:relative; margin-right:50px;">
                     <ion-fab horizontal="center" slot="fixed">
                         <ion-fab-button class="upload">
                             <ion-input (change)="onselectedFile($event)" class="input_file" type="file" [ngModelOptions]="{standalone:true}" [(ngModel)]='image'></ion-input>
                             <ion-icon id="profile_icon" class="profile" name="person-circle"></ion-icon>
                             <ion-icon id="camera_icon" class="camera" name="camera"></ion-icon>
-                            <img id="pp" style="display: none;" [src]="url" alt="">
+                            <ion-img id="pp" style="display: none;" [src]="url" alt=""></ion-img>
                         </ion-fab-button>
                     </ion-fab>
                     <ion-item style="padding-top: 100px; margin-left: 60px;" lines="none"><small>Upload Profile Picture</small>
