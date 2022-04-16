@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'settings-modal',
     loadChildren: () => import('./pages/settings-modal/settings-modal.module').then( m => m.SettingsModalPageModule)
   },
+  {
+    path: 'rating',
+    loadChildren: () => import('./pages/tabs/rating/rating.module').then( m => m.RatingPageModule)
+  },
 ];
 
 @NgModule({

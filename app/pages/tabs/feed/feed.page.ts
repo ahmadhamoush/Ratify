@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
+import { RatingPage } from '../rating/rating.page';
+import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+
+
+
 
 @Component({
   selector: 'app-feed',
@@ -10,16 +16,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FeedPage implements OnInit {
 
   users :any [] =[];
-  usersFeed : any[] = [];
+  username : any;
  
-  constructor(private http : HttpClient) { }
+ 
+  constructor(private http : HttpClient, private modalCtrl : ModalController, private userDetails : GetUserDetailsService) { }
    
- 
 
   ngOnInit() {
     this.createFeed();
+    this.userDetails.getName().subscribe(data=>{
+      this.username = data;
+    })
     
   }
+ 
 
 
   createFeed(){
@@ -33,13 +43,29 @@ export class FeedPage implements OnInit {
       for (let index = 0; index < Object.keys(response).length; index++) {
         
         this.users = response;
-
-        this.usersFeed.push(this.users[index]);
-        console.log(this.usersFeed);
-
       }
-
-  
+      console.log(this.users);
+      
+     
     });
+  }
+  startRating(event){
+    var details = event.target.alt.split(' ');
+    var username = details[0];
+    var name = details[1] + ' ' + details[2];
+      console.log(username);
+      console.log(name);
+    this.modalCtrl.create({
+      component: RatingPage,
+      componentProps: {
+        'username': username,
+        'name': name,
+        'image' : event.target.src
+      },
+      swipeToClose:true,
+    }).then(res =>{
+      res.present();
+    })
+  
   }
 }

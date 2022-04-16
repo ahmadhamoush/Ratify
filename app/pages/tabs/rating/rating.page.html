@@ -1,0 +1,21 @@
+<ion-content>
+    <div class="container">
+
+        <div class="round-bottom"></div>
+
+        <div>
+            <ion-item lines="none" class="logo">
+                <ion-label>
+                    Ratify
+                </ion-label>
+            </ion-item>
+            <ion-card style="z-index:2" (click)='close()' class='usercard' button='true'>
+                <ion-card-header>
+                    <ion-card-subtitle color="light">{{name}}</ion-card-subtitle>
+                    <ion-card-title color="light">@{{username}}</ion-card-title>
+                </ion-card-header>
+                <ion-img id="img" src="{{image}}"></ion-img>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

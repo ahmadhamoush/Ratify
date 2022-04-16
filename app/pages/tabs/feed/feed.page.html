@@ -11,24 +11,29 @@
                 </ion-label>
 
             </ion-item>
+            <ion-item lines="none" class="logo">
+                <ion-label>
+                    Feed
+                </ion-label>
+
+            </ion-item>
         </div>
 
+        <ion-slides [options]="{'direction': 'vertical'}">
+            <ng-container *ngFor="let user of users; let i =index;">
+                <ion-slide style="transition: 0.8s;" id="card" *ngIf="username !== user.name">
+                    <ion-card (click)='startRating($event)' class='usercard' button='true'>
+                        <ion-card-header>
+                            <ion-card-subtitle color="light">{{user.name}}</ion-card-subtitle>
+                            <ion-card-title color="light">@{{user.username}}</ion-card-title>
+                        </ion-card-header>
+                        <ion-img alt="{{user.username}} {{user.name}}" id="img" src="{{user.image}}"></ion-img>
+                    </ion-card>
+                    <small class="desc">Swipe Up for More!</small>
 
-        <ion-card *ngFor="let user of usersFeed | slice:0:2" class='usercard' button='true'>
+                </ion-slide>
+            </ng-container>
+        </ion-slides>
 
-            <div>
-                <!-- <ion-card-header>
-                    <ion-card-subtitle color="light">{{user.name}}</ion-card-subtitle>
-                    <ion-card-title color="light">@{{user.username}}</ion-card-title>
-                </ion-card-header>
-
-                <ion-img id="img" src="{{user.image}}"></ion-img> -->
-                <swiper>
-                    <ng-template swiperSlide>Slide 1</ng-template>
-                    <ng-template swiperSlide>Slide 3</ng-template>
-                    <ng-template swiperSlide>Slide 3</ng-template>
-                </swiper>
-            </div>
-        </ion-card>
     </div>
 </ion-content>
