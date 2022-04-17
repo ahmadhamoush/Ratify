@@ -15,7 +15,7 @@
     background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     /* Ellipse 1 */
     width: 864px;
-    height: 320px;
+    height: 420px;
     left: -248px;
 }
 
@@ -81,7 +81,7 @@ ion-item {
     border-radius: 20px;
     max-width: 100%;
     margin: auto;
-    margin-bottom: 300px;
+    margin-top: 40px;
 }
 
 .usercard:hover,
@@ -101,3 +101,34 @@ ion-card-header {
     height: 271px;
     transform: scale(1.6);
 }
+
+ion-icon {
+    z-index: 2;
+    transform: scale(3);
+    margin: auto;
+    color: #eee;
+}
+
+.rate-option {
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    --ion-item-color: gold;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.icons {
+    display: flex;
+    margin: 10px;
+}
+
+.rate-container {}
+
+ion-button {
+    margin: 10px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {}

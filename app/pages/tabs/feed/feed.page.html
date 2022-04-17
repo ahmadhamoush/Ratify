@@ -21,7 +21,7 @@
 
         <ion-slides [options]="{'direction': 'vertical'}">
             <ng-container *ngFor="let user of users; let i =index;">
-                <ion-slide style="transition: 0.8s;" id="card" *ngIf="username !== user.name">
+                <ion-slide style="transition: 0.8s;" id="card" *ngIf="username != user.name">
                     <ion-card (click)='startRating($event)' class='usercard' button='true'>
                         <ion-card-header>
                             <ion-card-subtitle color="light">{{user.name}}</ion-card-subtitle>

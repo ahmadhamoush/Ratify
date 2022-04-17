@@ -16,4 +16,19 @@ export class RatingPage implements OnInit {
     this.modalCtr.dismiss();
   }
 
+  starClicked(event){
+    var stars = document.querySelectorAll(('.icons ion-icon'));
+    var star = event.target;
+    var clicked = true;
+    if(clicked){
+    star.style.color = 'gold';
+    star.name = 'star';
+    clicked = false;
+    }else{
+    star.style.color = '#eee';
+    star.name = 'star-outline';
+    clicked = true;
+    }
+  }
+
 }
