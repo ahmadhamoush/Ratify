@@ -55,17 +55,20 @@ export class FeedPage implements OnInit {
     var name = details[1] + ' ' + details[2];
       console.log(username);
       console.log(name);
-    this.modalCtrl.create({
-      component: RatingPage,
-      componentProps: {
-        'username': username,
-        'name': name,
-        'image' : event.target.src
-      },
-      swipeToClose:true,
-    }).then(res =>{
-      res.present();
-    })
+    setTimeout(()=>{
+      this.modalCtrl.create({
+        component: RatingPage,
+        componentProps: {
+          'username': username,
+          'name': name,
+          'image' : event.target.src
+        },
+        swipeToClose:true,
+      }).then(res =>{
+        res.present();
+      })
+    },300);
+  
   
   }
 }

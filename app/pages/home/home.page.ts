@@ -16,14 +16,7 @@ export class HomePage {
     this.route.navigate(['/login']);
 
   }
-  public ionicNamedColor: string = 'primary';
-  animate(){
-    if(this.ionicNamedColor === 'primary') { 
-      this.ionicNamedColor = 'secondary'
-    } else {
-      this.ionicNamedColor = 'primary'
-    }
-  }
+ 
 
 }
 
