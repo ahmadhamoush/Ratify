@@ -14,13 +14,19 @@ export class RatingPage implements OnInit {
     this.cute = 0;
     this.personality = 0;
     this.hot = 0;
+    this.social = 0;
+    this.friendly =0;
+    this.fun =0;
   }
   close(){
     this.modalCtr.dismiss();
   }
-    cute : any;
-    personality : any;
-    hot : any;
+    cute : number;
+    personality : number;
+    hot : number;
+    social : number;
+    friendly: number
+    fun : number;
 
   starClicked(event){
     var stars = document.querySelectorAll(('.icons ion-icon'));
@@ -68,9 +74,48 @@ export class RatingPage implements OnInit {
     }
     
       }
+            //How Social?
+
+            for(let i =15; i<20;i++){
+              if(star ==stars[i] && star.name =='star'){
+                this.social+=20;   
+            }
+            if(star ==stars[i] && star.name =='star-outline'){
+              this.social-=20;   
+          }
+          
+            }
+
+              //How Friendly?
+
+              for(let i =20; i<25;i++){
+                if(star ==stars[i] && star.name =='star'){
+                  this.friendly+=20;   
+              }
+              if(star ==stars[i] && star.name =='star-outline'){
+                this.friendly-=20;   
+            }
+            
+              }
+
+              //How Fun?
+
+              for(let i =25; i<30;i++){
+                if(star ==stars[i] && star.name =='star'){
+                  this.fun+=20;   
+              }
+              if(star ==stars[i] && star.name =='star-outline'){
+                this.fun-=20;   
+            }
+            
+              }
+
       console.log('How Cute? : ' + this.cute +"%");
       console.log('Personality : ' + this.personality +"%");
       console.log('How Hot? : ' + this.hot +"%");
+      console.log('How Social? : ' + this.social +"%");
+      console.log('How Friendly? : ' + this.friendly +"%");
+      console.log('How Fun? : ' + this.fun +"%");
       console.log(stars);
 
  

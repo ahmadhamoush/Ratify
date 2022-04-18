@@ -17,46 +17,94 @@
                 <ion-img id="img" src="{{image}}"></ion-img>
             </ion-card>
 
-            <div style="padding-top: 50px;">
-                <div class="rate-container">
-                    <ion-item lines="none" class="rate-option">
-                        <ion-label>How Cute?</ion-label>
-                    </ion-item>
-                    <div class="icons">
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                    </div>
-                </div>
+            <div>
+                <ion-slides [options]="{'direction': 'horizontal'}">
+                    <ion-slide style="display: flex; flex-direction: column;">
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>How Cute?</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                        </div>
 
-                <div class="rate-container">
-                    <ion-item lines="none" class="rate-option">
-                        <ion-label>Personality</ion-label>
-                    </ion-item>
-                    <div class="icons">
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="rate-container">
-                    <ion-item lines="none" class="rate-option">
-                        <ion-label>How Hot?</ion-label>
-                    </ion-item>
-                    <div class="icons">
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                        <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
-                    </div>
-                </div>
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>Personality</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                        </div>
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>How Hot?</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                            <small class="desc">Swipe For More!</small>
+                        </div>
+                    </ion-slide>
+
+                    <ion-slide style="display: flex; flex-direction: column;">
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>How Social?</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>How Friendly</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                        </div>
+                        <div class="rate-container">
+                            <ion-item lines="none" class="rate-option">
+                                <ion-label>How Fun?</ion-label>
+                            </ion-item>
+                            <div class="icons">
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                                <ion-icon (click)="starClicked($event)" name="star-outline"></ion-icon>
+                            </div>
+                            <small class="desc">Swipe For More!</small>
+                        </div>
+                    </ion-slide>
+
+                </ion-slides>
+
                 <ion-button expand="block" color="dark">
-                    <ion-label style="margin-left: 130px; font-size: 20px;">RATE!</ion-label>
+                    <ion-label style="margin-left: 50px; font-size: 20px;">RATE!</ion-label>
                     <ion-icon style="transform: scale(1); margin-left: 5px;" name="star"></ion-icon>
                 </ion-button>
 
