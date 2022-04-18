@@ -116,9 +116,7 @@ export class RatingPage implements OnInit {
       console.log('How Social? : ' + this.social +"%");
       console.log('How Friendly? : ' + this.friendly +"%");
       console.log('How Fun? : ' + this.fun +"%");
-      console.log(stars);
 
- 
   }
 
 }

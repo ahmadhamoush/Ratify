@@ -4,9 +4,6 @@ import { ModalController } from '@ionic/angular';
 import { RatingPage } from '../rating/rating.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 
-
-
-
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.page.html',
@@ -58,6 +55,7 @@ export class FeedPage implements OnInit {
     setTimeout(()=>{
       this.modalCtrl.create({
         component: RatingPage,
+        cssClass: 'fullscreen',
         componentProps: {
           'username': username,
           'name': name,
@@ -71,4 +69,5 @@ export class FeedPage implements OnInit {
   
   
   }
+  
 }

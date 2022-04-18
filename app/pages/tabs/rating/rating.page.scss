@@ -132,4 +132,11 @@ ion-button {
     color: white;
 }
 
-@media (max-width: 500px) {}
+@media (min-width: 615px) {
+    .round-bottom {
+        width: 100%;
+        left: 0;
+        border-top-left-radius: 100% 150px !important;
+        border-top-right-radius: 100% 150px !important;
+    }
+}
