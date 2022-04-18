@@ -20,32 +20,46 @@ export class FeedPage implements OnInit {
    
 
   ngOnInit() {
+ 
+  }
+  ionViewWillEnter(){
     this.createFeed();
     this.userDetails.getName().subscribe(data=>{
       this.username = data;
     })
-    
   }
  
 
 
   createFeed(){
-    
-  
+
     var headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');
     this.http.get('http://127.0.0.1/ratify/get_users.php',{headers:headers}).subscribe((response :any)=>{
+      let users_list = [];
 
+    var users_length = Object.keys(response).length;
 
-      for (let index = 0; index < Object.keys(response).length; index++) {
-        
-        this.users = response;
+      while(users_list.length < users_length){
+         var random = Math.floor(Math.random() * users_length) + 0;
+      if(users_list.indexOf(random) === -1) {
+        users_list.push(random);
+      }
+  }
+      for (let index = 0; index <users_length ; index++) {
+      
+        this.users[index] = response[users_list[index]];
+ 
       }
       console.log(this.users);
-      
+
      
+      console.log(users_list);
     });
   }
+
+
+
   startRating(event){
     var details = event.target.alt.split(' ');
     var username = details[0];
