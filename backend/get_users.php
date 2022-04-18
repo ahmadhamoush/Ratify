@@ -22,6 +22,7 @@ header("Access-Control-Allow-Credentials: true");}
         $image = file_get_contents($src);
         $type = pathinfo($src, PATHINFO_EXTENSION);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
+        $user['image'] = $base64;
             $user_obj[] = $user;
        
 }

@@ -14,7 +14,7 @@ header("Access-Control-Allow-Credentials: true");}
 
 //getting data
 $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request = json_decode($postdata);
- $name = $request; 
+ $name = ucwords($request); 
   }
 
   //adding name column in database

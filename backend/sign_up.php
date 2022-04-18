@@ -16,7 +16,7 @@ header("Access-Control-Allow-Credentials: true");
 //getting post data from app
 $postdata = file_get_contents("php://input");
  if (isset($postdata)) { $request = json_decode($postdata);
- $username = $request->username; 
+ $username = strtolower($request->username); 
  $email = $request->email; 
  $password = $request->password;
  $confirm_pass = $request->confirm_pass;
