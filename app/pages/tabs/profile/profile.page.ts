@@ -21,12 +21,13 @@ export class ProfilePage implements OnInit {
   
    
   ngOnInit() {
-
-    this.fetchUserData();
     
     }
     ionViewWillEnter(){
       this.fetchUserData();
+      this.http.get('http://127.0.0.1/ratify/get_users_rates.php', {withCredentials:true}).subscribe((response:any)=>{
+        console.log(response);
+        });
     }
   settings(){
    this.modalCtrl.create({
