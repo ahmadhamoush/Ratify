@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { NavParams } from '@ionic/angular';
-
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.page.html',
@@ -12,7 +12,15 @@ import { NavParams } from '@ionic/angular';
 export class RatingPage implements OnInit {
   
   constructor(private modalCtr : ModalController, private http : HttpClient, private user : GetUserDetailsService,
-    private navParams : NavParams) { }
+    private navParams : NavParams, private toastCtrl : ToastController, private alertCtrl : AlertController) { }
+
+    cute : number;
+    personality : number;
+    hot : number;
+    social : number;
+    friendly: number
+    fun : number;
+    rated_user : string;
 
   ngOnInit() {
     this.cute = 0;
@@ -26,13 +34,16 @@ export class RatingPage implements OnInit {
   close(){
     this.modalCtr.dismiss();
   }
-    cute : number;
-    personality : number;
-    hot : number;
-    social : number;
-    friendly: number
-    fun : number;
-    rated_user : string;
+
+  async toastMessage(message, color){
+    const toast = this.toastCtrl.create({
+      message : message,
+      duration : 5000,
+      color: color,
+    });
+    (await toast).present(); 
+  }
+   
 
   starClicked(event){
     var stars = document.querySelectorAll(('.icons ion-icon'));
@@ -116,14 +127,7 @@ export class RatingPage implements OnInit {
           
   }
 
-  upload_rates(){
-
-    console.log('How Cute? : ' + this.cute +"%");
-    console.log('Personality : ' + this.personality +"%");
-    console.log('How Hot? : ' + this.hot +"%");
-    console.log('How Social? : ' + this.social +"%");
-    console.log('How Friendly? : ' + this.friendly +"%");
-    console.log('How Fun? : ' + this.fun +"%");
+  async upload_rates(){
 
     var headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', "*");
@@ -136,9 +140,34 @@ export class RatingPage implements OnInit {
       'fun' : this.fun,
       'rated' : this.rated_user,
     }
-    this.http.post('http://127.0.0.1/ratify/upload_rates.php', JSON.stringify(rates), {headers:headers, withCredentials : true}).subscribe((response : any)=>{
-      console.log(response);
-    })
+
+    let alert  = this.alertCtrl.create({
+      header : 'Reminder',
+      message: 'You can only rate ' + this.rated_user + ' once ',
+      buttons :[
+        {
+          text : 'Cancel',
+          role : 'cancel',
+
+        },
+        {
+          text : 'Rate',
+          handler: ()=>{
+            this.http.post('http://127.0.0.1/ratify/upload_rates.php', JSON.stringify(rates), {headers:headers, withCredentials : true}).subscribe((response : any)=>{
+           if(response['status']== 'success'){
+             this.toastMessage(this.rated_user +' Rated Successfully', 'success')
+             console.log(response);
+            }
+            else{
+            this.toastMessage(response['status'] + this.rated_user, 'danger');
+            console.log(response);
+          }
+            });
+          }
+        }
+      ]
+    });
+    (await alert).present();
   }
 
 }
