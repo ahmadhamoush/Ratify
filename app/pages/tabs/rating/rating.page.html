@@ -5,16 +5,19 @@
 
         <div>
             <ion-item lines="none" class="logo">
-                <ion-label>
-                    Ratify
-                </ion-label>
+                <ion-icon class="back" (click)='close()' name="arrow-back-outline"></ion-icon>
             </ion-item>
-            <ion-card style="z-index:2" (click)='close()' class='usercard' button='true'>
-                <ion-card-header>
+            <ion-card (click)="checkRatings()" style="z-index:2" class='usercard' button='true'>
+                <ion-card-header style="margin-left: 10px;">
                     <ion-card-subtitle color="light">{{name}}</ion-card-subtitle>
-                    <ion-card-title color="light">@{{username}}</ion-card-title>
+                    <ion-card-title style="font-weight: 400; font-size: 20px;" color="light">@{{username}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-header>
+                    <ion-card-subtitle style="margin-top: 230px; margin-left:100px; font-size:13px; font-weight: 400;" color="light">Check Ratings</ion-card-subtitle>
+                    <ion-icon class="add" name="add-circle"></ion-icon>
                 </ion-card-header>
                 <ion-img id="img" src="{{image}}"></ion-img>
+
             </ion-card>
 
             <div>

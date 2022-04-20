@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-profile',
@@ -25,9 +26,12 @@ export class ProfilePage implements OnInit {
     }
     ionViewWillEnter(){
       this.fetchUserData();
-      this.http.get('http://127.0.0.1/ratify/get_users_rates.php', {withCredentials:true}).subscribe((response:any)=>{
-        console.log(response);
+     setTimeout(()=>{
+        this.user.getRates(this.username).subscribe(rates => {
+          console.log(rates);
         });
+        console.log(this.username);
+     },100);
     }
   settings(){
    this.modalCtrl.create({

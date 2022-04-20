@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,10 @@ export class GetUserDetailsService {
   getName(): Observable<any> {
     return this.http.get('http://127.0.0.1/ratify/user_details.php', {withCredentials:true})
     .pipe(map((response: any) => response['name']));
+   }
+   getRates(username) : Observable<any>{
+     return this.http.post(`http://127.0.0.1/ratify/get_users_rates.php?username=${username}`, JSON.stringify(username), {withCredentials:true})
+    .pipe(map((response:any)=>response));
+   
    }
 }

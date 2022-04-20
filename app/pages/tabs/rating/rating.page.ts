@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { NavParams } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.page.html',
@@ -12,7 +13,8 @@ import { AlertController } from '@ionic/angular';
 export class RatingPage implements OnInit {
   
   constructor(private modalCtr : ModalController, private http : HttpClient, private user : GetUserDetailsService,
-    private navParams : NavParams, private toastCtrl : ToastController, private alertCtrl : AlertController) { }
+    private navParams : NavParams, private toastCtrl : ToastController, private alertCtrl : AlertController,
+    private route : Router) { }
 
     cute : number;
     personality : number;
@@ -168,6 +170,14 @@ export class RatingPage implements OnInit {
       ]
     });
     (await alert).present();
+  }
+  checkRatings(){
+    setTimeout(()=>{
+     this.close();
+     setTimeout(()=>{
+      this.route.navigate(['user-stats']);
+     },300);
+    },300);
   }
 
 }

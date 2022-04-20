@@ -23,9 +23,9 @@
             <ng-container *ngFor="let user of users; let i =index;">
                 <ion-slide style="transition: 0.8s;" id="card" *ngIf="username != user.name">
                     <ion-card (click)='startRating($event)' class='usercard' button='true'>
-                        <ion-card-header>
-                            <ion-card-subtitle color="light">{{user.name}}</ion-card-subtitle>
-                            <ion-card-title color="light">@{{user.username}}</ion-card-title>
+                        <ion-card-header style="margin-left: 10px;">
+                            <ion-card-subtitle style="font-size: 15px;" color="light">{{user.name}}</ion-card-subtitle>
+                            <ion-card-title style="font-weight: 400;" color="light">@{{user.username}}</ion-card-title>
                         </ion-card-header>
                         <ion-img alt="{{user.username}} {{user.name}}" id="img" src="{{user.image}}"></ion-img>
                     </ion-card>

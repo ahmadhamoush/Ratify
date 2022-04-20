@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'rating',
     loadChildren: () => import('./pages/tabs/rating/rating.module').then( m => m.RatingPageModule)
   },
+  {
+    path: 'user-stats',
+    loadChildren: () => import('./pages/user-stats/user-stats.module').then( m => m.UserStatsPageModule)
+  },
 ];
 
 @NgModule({
