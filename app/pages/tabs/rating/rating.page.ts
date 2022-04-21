@@ -23,6 +23,8 @@ export class RatingPage implements OnInit {
     friendly: number
     fun : number;
     rated_user : string;
+    rated_name : string;
+    rated_image : string;
 
   ngOnInit() {
     this.cute = 0;
@@ -32,6 +34,8 @@ export class RatingPage implements OnInit {
     this.friendly =0;
     this.fun =0;
     this.rated_user = this.navParams.get('username');
+    this.rated_name = this.navParams.get('name');
+    this.rated_image = this.navParams.get('image');
   }
   close(){
     this.modalCtr.dismiss();
@@ -175,7 +179,7 @@ export class RatingPage implements OnInit {
     setTimeout(()=>{
      this.close();
      setTimeout(()=>{
-      this.route.navigate(['user-stats']);
+      this.route.navigate(['user-stats'], {state : {username: this.rated_user, name:this.rated_name,image:this.rated_image}});
      },300);
     },300);
   }

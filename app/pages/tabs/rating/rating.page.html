@@ -7,7 +7,7 @@
             <ion-item lines="none" class="logo">
                 <ion-icon class="back" (click)='close()' name="arrow-back-outline"></ion-icon>
             </ion-item>
-            <ion-card (click)="checkRatings()" style="z-index:2" class='usercard' button='true'>
+            <ion-card (click)="checkRatings($event)" style="z-index:2" class='usercard' button='true'>
                 <ion-card-header style="margin-left: 10px;">
                     <ion-card-subtitle color="light">{{name}}</ion-card-subtitle>
                     <ion-card-title style="font-weight: 400; font-size: 20px;" color="light">@{{username}}</ion-card-title>
