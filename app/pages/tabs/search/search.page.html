@@ -1,7 +1,7 @@
 <ion-content scroll-y="false">
     <div class="container">
 
-
+        <div class="round-bottom"></div>
 
         <div>
             <ion-item lines="none" class="logo">
@@ -13,16 +13,17 @@
         </div>
 
         <ion-content scroll-y="true">
-            <ion-card class="searchItems" *ngFor="let user of users | filter : searchFilter">
-                <ion-img style='border-radius: 50%;' src="{{user.image}}"></ion-img>
+            <ion-card title="{{user.username}}?{{user.name}}?{{user.image}}" (click)='search($event)' color="dark" class="searchItems" *ngFor="let user of users | filter : searchFilter" button='true'>
+                <ion-fab-button class="image-container">
+                    <img src={{user.image}} id="img" alt="">
+                </ion-fab-button>
                 <div>
                     <ion-card-header>
-                        <ion-card-subtitle style="font-size: 15px;" color="light">{{user.name}}</ion-card-subtitle>
-                        <ion-card-title style="font-weight: 400;" color="light">@{{user.username}}</ion-card-title>
+                        <ion-card-title title="{{user.username}}?{{user.name}}?{{user.image}}" style="font-size: 15px;" color="light">{{user.name}}</ion-card-title>
+                        <ion-card-subtitle title="{{user.username}}?{{user.name}}?{{user.image}}" style="font-weight: 400;" color="light">@{{user.username}}</ion-card-subtitle>
                     </ion-card-header>
                 </div>
             </ion-card>
-            <div class="round-bottom"></div>
         </ion-content>
 
     </div>

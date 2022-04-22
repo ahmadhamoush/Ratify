@@ -6,17 +6,16 @@
     }
     
     .round-bottom {
-        border-top-left-radius: 50% 150px !important;
-        border-top-right-radius: 50% 150px !important;
-        overflow: hidden;
+        border-top-left-radius: 100% 170px !important;
+        border-top-right-radius: 100% 170px !important;
         position: absolute;
         /* Ellipse 1 */
         bottom: 0;
         background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
         /* Ellipse 1 */
-        width: 864px;
-        height: 100%;
-        left: -248px;
+        width: 100%;
+        height: 20px;
+        z-index: 2;
     }
     
     .container {
@@ -46,36 +45,48 @@
     ion-searchbar {
         border: 1px solid #2EA5BF;
         box-sizing: border-box;
-        border-radius: 4px;
+        border-radius: 10px;
         margin-top: 100px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         width: 90%;
         margin-left: 5%;
         --placeholder-color: #2EA5BF; //currentColor
         color: #2EA5BF;
         --background: transparent;
         --icon-color: #2EA5BF;
-        z-index: 2;
     }
     
     .searchItems {
-        width: 50%;
-        margin: auto;
-        z-index: 2;
         display: flex;
-        background-color: white;
+        flex-direction: column;
+        width: 70%;
+        height: 70px;
+        margin: 20px auto;
+        border-radius: 70px;
     }
     
     .searchItems ion-card-header ion-card-subtitle {
-        margin-top: 15px;
-        color: #2EA5BF;
+        font-style: italic;
+        font-size: bold;
+        font-size: 20px;
+        margin-top: 2px;
+        z-index: 2;
     }
     
     .searchItems ion-card-header ion-card-title {
-        color: #2EA5BF;
+        font-weight: 300;
+        font-style: italic;
+        margin-top: 10px;
     }
     
-    ion-img::part(image) {
-        border-radius: 500px;
-        margin: 10px;
+    .image-container {
+        margin: auto;
+        margin-left: 20px;
+        float: left;
+        width: 70px;
+        height: 70px;
+    }
+    
+    img {
+        transform: scale(1.5);
     }

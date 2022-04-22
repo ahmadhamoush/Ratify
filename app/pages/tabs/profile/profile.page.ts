@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
-import { response } from 'express';
 
 @Component({
   selector: 'app-profile',

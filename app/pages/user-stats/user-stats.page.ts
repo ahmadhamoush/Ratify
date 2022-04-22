@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
-import { Thumbs } from 'swiper';
 
 @Component({
   selector: 'app-user-stats',

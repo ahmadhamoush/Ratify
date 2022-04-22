@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,12 @@ export class SearchPage implements OnInit {
   searchFilter : any;
   users :any [] =[];
   logged_user : any;
-  constructor(private service : GetUserDetailsService) { }
+
+  searched_user : any;
+  searched_name :any;
+  searched_image :any;
+  
+  constructor(private service : GetUserDetailsService, private route:Router) { }
 
   ngOnInit() {
     
@@ -42,14 +48,16 @@ export class SearchPage implements OnInit {
         console.log(users_list);
       });
   }
+search(event){
+  var details =event.srcElement.title.split('?');
+  this.searched_user = details[0]
+  this.searched_name = details[1];
+  this.searched_image = details[2];
+    
 
+    this.route.navigate(['user-stats'], {state : {username: this.searched_user, name:this.searched_name,image:this.searched_image}});
   
-  hide(){
-    var searchedElements = document.getElementsByTagName('ion-list');
-    // searchedElements.style.display='block';
-    for(let i =0;i<searchedElements.length;i++){
-      searchedElements[i].style.display = 'none';
-    }
-  }
+  
+}
 }
 
