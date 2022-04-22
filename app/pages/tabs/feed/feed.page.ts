@@ -33,9 +33,7 @@ export class FeedPage implements OnInit {
 
   createFeed(){
 
-    var headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Origin', '*');
-    this.http.get('http://127.0.0.1/ratify/get_users.php',{headers:headers}).subscribe((response :any)=>{
+   this.userDetails.getAllUsers().subscribe((response :any)=>{
       let users_list = [];
 
     var users_length = Object.keys(response).length;
@@ -52,7 +50,6 @@ export class FeedPage implements OnInit {
  
       }
       console.log(this.users);
-
      
       console.log(users_list);
     });

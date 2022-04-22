@@ -1,11 +1,8 @@
-<ion-content scroll-y="false">
+<ion-content>
 
     <div class="bottom"></div>
-    <ion-item lines="none">
-        <ion-icon class="back" (click)='close()' name="arrow-back-outline"></ion-icon>
-    </ion-item>
-    <ion-item lines="none">
-        <ion-label class="name">
+    <ion-item lines="none" class="logo">
+        <ion-label>
             {{name}}
         </ion-label>
     </ion-item>
@@ -13,7 +10,7 @@
         <ion-fab-button class="image-container">
             <img src={{image}} id="img" alt="">
         </ion-fab-button>
-        <small style="margin-top: 30px; left: -8px; font-size: 15px; color:white; width: 100px;">@{{username}}</small>
+        <small style="margin-top: 30px; left: -15px; text-align: center; font-size: 15px; color:white; width: 100px;">@{{username}}</small>
     </ion-fab>
     <small class="total_rate">Total Rates: {{total_rates*100}}</small>
     <ion-progress-bar class="total_rates" color="light" value="{{total_rates}}"></ion-progress-bar>
@@ -24,7 +21,7 @@
                     Cuteness:
                 </ion-label>
             </ion-item>
-            <small>{{cute*100}}%</small>
+            <small class="percentages">{{cute*100}}%</small>
             <ion-progress-bar color="light" value="{{cute}}"></ion-progress-bar>
         </div>
         <div class="rate">
@@ -33,7 +30,7 @@
                     Personality:
                 </ion-label>
             </ion-item>
-            <small>{{personality*100}}%</small>
+            <small class="percentages">{{personality*100}}%</small>
             <ion-progress-bar color="light" value="{{personality}}"></ion-progress-bar>
         </div>
         <div class="rate">
@@ -42,7 +39,7 @@
                     Hotness:
                 </ion-label>
             </ion-item>
-            <small>{{hot*100}}%</small>
+            <small class="percentages">{{hot*100}}%</small>
             <ion-progress-bar color="light" value="{{hot}}"></ion-progress-bar>
         </div>
         <div class="rate">
@@ -51,7 +48,7 @@
                     Social:
                 </ion-label>
             </ion-item>
-            <small>{{social*100}}%</small>
+            <small class="percentages">{{social*100}}%</small>
             <ion-progress-bar color="light" value="{{social}}"></ion-progress-bar>
         </div>
         <div class="rate">
@@ -60,7 +57,7 @@
                     Fun:
                 </ion-label>
             </ion-item>
-            <small>{{fun*100}}%</small>
+            <small class="percentages">{{fun*100}}%</small>
             <ion-progress-bar color="light" value="{{fun}}"></ion-progress-bar>
         </div>
         <div class="rate">
@@ -69,26 +66,25 @@
                     Friendly:
                 </ion-label>
             </ion-item>
-            <small>{{friendly*100}}%</small>
+            <small class="percentages">{{friendly*100}}%</small>
             <ion-progress-bar color="light" value="{{friendly}}"></ion-progress-bar>
         </div>
     </div>
+
 </ion-content>
-<ion-toolbar>
-    <ion-tabs>
-        <ion-tab-bar>
-            <ion-tab-button>
-                <ion-icon name="flash"></ion-icon>
-            </ion-tab-button>
-            <ion-tab-button (click)="search()">
-                <ion-icon name="search"></ion-icon>
-            </ion-tab-button>
-            <ion-tab-button (click)="feed()">
-                <ion-icon name="home"></ion-icon>
-            </ion-tab-button>
-            <ion-tab-button (click)="profile()">
-                <ion-icon name="person"></ion-icon>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
-</ion-toolbar>
+<ion-tabs>
+    <ion-tab-bar>
+        <ion-tab-button>
+            <ion-icon name="flash"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button (click)="search()">
+            <ion-icon name="search"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button (click)="feed()">
+            <ion-icon name="home"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button (click)="profile()">
+            <ion-icon name="person"></ion-icon>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>
