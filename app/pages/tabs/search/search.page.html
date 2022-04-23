@@ -9,12 +9,12 @@
                     Ratify
                 </ion-label>
             </ion-item>
-            <ion-searchbar debounce="500" placeholder="eg: @John Smith" [(ngModel)]='searchFilter'> </ion-searchbar>
+            <ion-searchbar mode="ios" debounce="500" placeholder="eg: @John Smith" [(ngModel)]='searchFilter'> </ion-searchbar>
         </div>
 
         <ion-content scroll-y="true">
             <ng-container *ngFor="let user of users | filter : searchFilter">
-                <ion-card title="{{user.username}}?{{user.name}}?{{user.image}}" (click)='search($event)' class="searchItems" *ngIf="logged_user != user.name" button='true'>
+                <ion-card mode="ios" title="{{user.username}}?{{user.name}}?{{user.image}}" (click)='search($event)' class="searchItems" *ngIf="logged_user != user.name" button='true'>
                     <ion-fab-button class="image-container">
                         <img src={{user.image}} id="img" alt="">
                     </ion-fab-button>

@@ -55,3 +55,14 @@ ion-item {
     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     --ion-item-color: white;
 }
+
+@media (min-width: 500px) {
+    .round-top {
+        width: 100%;
+        top: 0;
+        height: 150px;
+        left: 0;
+        border-bottom-left-radius: 100% 150px !important;
+        border-bottom-right-radius: 100% 150px !important;
+    }
+}

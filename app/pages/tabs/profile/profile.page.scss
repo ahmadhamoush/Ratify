@@ -80,3 +80,35 @@ ion-item {
     right: 10px;
     cursor: pointer;
 }
+
+@media (min-width: 500px) {
+    .round-bottom {
+        width: 100%;
+        left: 0;
+        border-top-left-radius: 100% 150px !important;
+        border-top-right-radius: 100% 150px !important;
+    }
+    .image-container {
+        transform: scale(3.5);
+    }
+}
+
+@media (max-width: 375px) {
+    .image-container {
+        transform: scale(2.8);
+        top: -170px;
+    }
+    .round-bottom {
+        height: 400px;
+    }
+}
+
+@media (max-width: 320px) {
+    .image-container {
+        transform: scale(2.5);
+        top: -120px;
+    }
+    .round-bottom {
+        height: 350px;
+    }
+}
