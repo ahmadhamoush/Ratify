@@ -10,10 +10,10 @@
         <ion-fab-button class="image-container">
             <img src={{image}} id="img" alt="">
         </ion-fab-button>
-        <small style="margin-top: 30px; left: -15px; text-align: center; font-size: 15px; color:white; width: 100px;">@{{username}}</small>
+        <small class="username">@{{username}}</small>
     </ion-fab>
-    <small class="total_rate">Total Rates: {{total_rates*100}}</small>
     <ion-progress-bar class="total_rates" color="light" value="{{total_rates}}"></ion-progress-bar>
+    <small class="total_rate">Total Rates: {{total_rates*100}}</small>
     <div class="rates">
         <div class="rate">
             <ion-item lines="none">
@@ -21,8 +21,8 @@
                     Cuteness:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{cute*100}}%</small>
             <ion-progress-bar color="light" value="{{cute}}"></ion-progress-bar>
+            <small class="percentages">{{cute*100}}%</small>
         </div>
         <div class="rate">
             <ion-item lines="none">
@@ -30,8 +30,8 @@
                     Personality:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{personality*100}}%</small>
             <ion-progress-bar color="light" value="{{personality}}"></ion-progress-bar>
+            <small class="percentages">{{personality*100}}%</small>
         </div>
         <div class="rate">
             <ion-item lines="none">
@@ -39,8 +39,8 @@
                     Hotness:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{hot*100}}%</small>
             <ion-progress-bar color="light" value="{{hot}}"></ion-progress-bar>
+            <small class="percentages">{{hot*100}}%</small>
         </div>
         <div class="rate">
             <ion-item lines="none">
@@ -48,8 +48,8 @@
                     Social:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{social*100}}%</small>
             <ion-progress-bar color="light" value="{{social}}"></ion-progress-bar>
+            <small class="percentages">{{social*100}}%</small>
         </div>
         <div class="rate">
             <ion-item lines="none">
@@ -57,8 +57,8 @@
                     Fun:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{fun*100}}%</small>
             <ion-progress-bar color="light" value="{{fun}}"></ion-progress-bar>
+            <small class="percentages">{{fun*100}}%</small>
         </div>
         <div class="rate">
             <ion-item lines="none">
@@ -66,15 +66,15 @@
                     Friendly:
                 </ion-label>
             </ion-item>
-            <small class="percentages">{{friendly*100}}%</small>
             <ion-progress-bar color="light" value="{{friendly}}"></ion-progress-bar>
+            <small class="percentages">{{friendly*100}}%</small>
         </div>
     </div>
 
 </ion-content>
 <ion-tabs>
     <ion-tab-bar>
-        <ion-tab-button>
+        <ion-tab-button (click)="leaderboard()">
             <ion-icon name="flash"></ion-icon>
         </ion-tab-button>
         <ion-tab-button (click)="search()">
