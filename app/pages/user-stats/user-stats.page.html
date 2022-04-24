@@ -11,6 +11,7 @@
             <img src={{image}} id="img" alt="">
         </ion-fab-button>
         <small class="username">@{{username}}</small>
+        <ion-button [disabled]="pending" id="friend_btn" (click)="addFriend() " style="--background:transparent">Add Friend</ion-button>
     </ion-fab>
     <ion-progress-bar class="total_rates" color="light" value="{{total_rates}}"></ion-progress-bar>
     <small class="total_rate">Total Rates: {{total_rates*100}}</small>

@@ -30,6 +30,11 @@ export class GetUserDetailsService {
    getAllUsers() : Observable<any>{
     return this.http.post(`http://127.0.0.1/ratify/get_users.php`, {withCredentials:true})
    .pipe(map((response:any)=>response));
+  }
+  getFriendRequestStatus(username) : Observable<any>{
+    return this.http.post(`http://127.0.0.1/ratify/friend_request_status.php?username=${username}`, JSON.stringify(username), {withCredentials:true})
+   .pipe(map((response:any)=>response));
 
   }
+
 }

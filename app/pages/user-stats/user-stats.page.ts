@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-stats',
@@ -20,7 +21,11 @@ export class UserStatsPage{
   fun : any;
   total_rates : any;
 
-  constructor(private route :Router, private user : GetUserDetailsService) { }
+  pending : boolean = false;
+
+
+
+  constructor(private route :Router, private user : GetUserDetailsService, private http : HttpClient) { }
 
   ionViewWillEnter() {
     this.username = history.state.username;
@@ -35,18 +40,39 @@ export class UserStatsPage{
       this.fun = rates['fun']/100;
       this.friendly = rates['friendly']/100;
       console.log(rates);
+    });
+    this.user.getFriendRequestStatus(this.username).subscribe(response =>{
+      console.log(response);
+      var btn = document.getElementById('friend_btn');
+      if(response['status'] === 'Pending'){
+        btn.innerHTML = 'Pending';
+        this.pending = true;
+      }
+      else{
+        this.pending = false;
+        btn.innerHTML = 'Add Friend';
+      }
     })
   }
+
 leaderboard(){
   this.route.navigate(['../homepage/leaderboard']);
 }
 search(){
   this.route.navigate(['../homepage/search']);
 }
-feed(){
+feed(){ 
   this.route.navigate(['../homepage/feed']);
 }
 profile(){
   this.route.navigate(['../homepage/profile']);
+}
+addFriend(){
+  this.http.post('http://127.0.0.1/ratify/add_friend.php', JSON.stringify(this.username), {withCredentials:true}).subscribe((respoonse : any)=>{
+    var btn = document.getElementById('friend_btn');
+    btn.innerHTML = 'Pending';
+    this.pending = true;
+    console.log(respoonse);
+  })
 }
 }
