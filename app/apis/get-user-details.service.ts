@@ -36,5 +36,9 @@ export class GetUserDetailsService {
    .pipe(map((response:any)=>response));
 
   }
+  getFriendRequests() : Observable<any>{
+    return this.http.get(`http://127.0.0.1/ratify/get_friend_requests.php`, {withCredentials:true})
+   .pipe(map((response:any)=>response));
 
+  }
 }

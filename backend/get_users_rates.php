@@ -12,8 +12,8 @@ header('Access-Control-Max-Age: 86400');
 header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
 
-    //getting rates for session user
-    $username = $_SESSION['username'];
+    //getting rates for user
+    $username = $_GET['username'];
 
     $query = $mysqli->prepare("SELECT * FROM rates WHERE user_id = ?");
     $query->bind_param('s', $username);
@@ -30,12 +30,12 @@ header("Access-Control-Allow-Credentials: true");}
     }
 
     //return rounded calculated rates (%)
-    $rates['cute'] = round(array_sum($cute)/sizeof($cute))."%";
-    $rates['personality'] = round(array_sum($personality)/sizeof($personality))."%";
-    $rates['hot'] = round(array_sum($hot)/sizeof($hot))."%";
-    $rates['social'] = round(array_sum($social)/sizeof($social))."%";
-    $rates['friendly'] = round(array_sum($friendly)/sizeof($friendly))."%";
-    $rates['fun'] = round(array_sum($fun)/sizeof($fun))."%";
+    $rates['cute'] = round(array_sum($cute)/sizeof($cute));
+    $rates['personality'] = round(array_sum($personality)/sizeof($personality));
+    $rates['hot'] = round(array_sum($hot)/sizeof($hot));
+    $rates['social'] = round(array_sum($social)/sizeof($social));
+    $rates['friendly'] = round(array_sum($friendly)/sizeof($friendly));
+    $rates['fun'] = round(array_sum($fun)/sizeof($fun));
     $rates['total_rates'] = $array->num_rows;
     echo json_encode($rates); 
 }

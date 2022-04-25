@@ -1,4 +1,6 @@
-<?php 
+<?php
+session_start();
+//resuming session
 include('db_info.php');  
 
 //setting headers     
@@ -10,24 +12,21 @@ header('Access-Control-Max-Age: 86400');
 header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
 
-
-    $query = $mysqli->prepare("SELECT * FROM users");
+    $username = $_SESSION['username'];
+    $status = 'Pending';
+    $query = $mysqli->prepare("SELECT friend_one FROM friends WHERE friend_two = ? AND status =?");
+    $query->bind_param('ss', $username, $status);
     $query->execute();
     $array = $query->get_result();
     if($array->num_rows>0){
-     while($user = $array->fetch_assoc()){
-        $src = "uploads/".$user['image'];
-        $image = file_get_contents($src);
-        $type = pathinfo($src, PATHINFO_EXTENSION);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
-        $user['image'] = $base64;
-            $user_obj[] = $user;
-       
-}
-   echo json_encode($user_obj); 
+     while($response = $array->fetch_assoc()){
+        $friends_list[] = $response;
+    }
+
+    echo json_encode($friends_list); 
 }
 else{
-    $user_details['status'] = 'no users';
+    $user_details['status'] = 'no friend requests';
     echo json_encode($user_details);
   
 }

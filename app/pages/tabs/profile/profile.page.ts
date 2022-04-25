@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
   displayedImage : string;
   name : string;
   username : string;
+  requests : [];
  
 
   constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService) { }
@@ -31,6 +32,9 @@ export class ProfilePage implements OnInit {
         });
         console.log(this.username);
      },100);
+     this.user.getFriendRequests().subscribe(requests =>{
+      console.log(requests)
+     })
     }
   settings(){
    this.modalCtrl.create({
