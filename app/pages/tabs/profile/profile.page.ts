@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
   displayedImage : string;
   name : string;
   username : string;
+  total_rates : number;
   requests : [];
  
 
@@ -29,6 +30,7 @@ export class ProfilePage implements OnInit {
      setTimeout(()=>{
         this.user.getRates(this.username).subscribe(rates => {
           console.log(rates);
+          this.total_rates = rates['total_rates'];
         });
         console.log(this.username);
      },100);

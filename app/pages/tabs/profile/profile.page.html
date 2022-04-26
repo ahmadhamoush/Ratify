@@ -17,14 +17,26 @@
                 <ion-icon (click)="settings()" style="transform: scale(1.2);" name="settings-outline"></ion-icon>
 
             </ion-item>
+
             <ion-fab horizontal="center" slot="fixed">
                 <ion-fab-button class="image-container">
                     <img src={{displayedImage}} id="img" alt="">
                 </ion-fab-button>
             </ion-fab>
+            <div style="display: flex; justify-content: center; position: relative; top:-60px">
+                <small>Change Profile Picture</small>
+                <small>Friends</small>
+            </div>
             <ion-item lines="none" class="name">
                 <ion-label>{{name}}</ion-label>
             </ion-item>
+            <div>
+                <small class=" username ">@{{username}}</small>
+                <div style="display: flex;flex-direction: column; align-items: flex-start; ">
+                    <ion-progress-bar color="light " value="{{total_rates/100}} "></ion-progress-bar>
+                    <small class="total_rate ">Total Rates: {{total_rates}}</small>
+                </div>
+            </div>
         </div>
     </div>
 </ion-content>
