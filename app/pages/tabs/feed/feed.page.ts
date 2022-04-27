@@ -49,8 +49,7 @@ export class FeedPage implements OnInit {
         this.users[index] = response[users_list[index]];
  
       }
-      console.log(this.users);
-     
+      console.log(this.users);  
       console.log(users_list);
     });
   }

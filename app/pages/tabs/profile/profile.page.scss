@@ -39,13 +39,13 @@
 }
 
 ion-item {
-    //     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    // --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     --ion-item-color: #2EA5BF;
 }
 
 .image-container {
     position: absolute;
-    top: -190px;
+    top: -75px;
     right: -30px;
     transform: scale(3);
     border-radius: 100%;
@@ -117,13 +117,8 @@ ion-progress-bar {
 .username {
     position: relative;
     margin-right: 50%;
-    top: -55px;
+    top: 33px;
     font-weight: 300;
-}
-
-.total_rate {
-    margin: auto;
-    top: -20px;
 }
 
 @media (min-width: 500px) {
@@ -141,19 +136,8 @@ ion-progress-bar {
 @media (max-width: 375px) {
     .image-container {
         transform: scale(2.8);
-        top: -170px;
     }
     .round-bottom {
         height: 400px;
-    }
-}
-
-@media (max-width: 320px) {
-    .image-container {
-        transform: scale(2.5);
-        top: -170px;
-    }
-    .round-bottom {
-        height: 350px;
     }
 }

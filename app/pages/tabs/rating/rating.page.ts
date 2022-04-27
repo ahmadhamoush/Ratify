@@ -161,7 +161,8 @@ export class RatingPage implements OnInit {
           handler: ()=>{
             this.http.post('http://127.0.0.1/ratify/upload_rates.php', JSON.stringify(rates), {headers:headers, withCredentials : true}).subscribe((response : any)=>{
            if(response['status']== 'success'){
-             this.toastMessage(this.rated_user +' Rated Successfully', 'success')
+             this.toastMessage(this.rated_user +' Rated Successfully', 'success');
+             this.modalCtr.dismiss();
              console.log(response);
             }
             else{

@@ -20,10 +20,29 @@ header("Access-Control-Allow-Credentials: true");}
     $array = $query->get_result();
     if($array->num_rows>0){
      while($response = $array->fetch_assoc()){
-        $friends_list[] = $response;
+        $friends_list[] = $response['friend_one'];
     }
 
-    echo json_encode($friends_list); 
+ for ($i=0; $i < count($friends_list) ; $i++) { 
+      $query = $mysqli->prepare("SELECT * FROM users WHERE username = ?");
+$query->bind_param('s', $friends_list[$i]);
+$query->execute(); 
+$results = $query->get_result();
+   while($user = $results->fetch_assoc()){
+        $src = "uploads/".$user['image'];
+        $image = file_get_contents($src);
+        $type = pathinfo($src, PATHINFO_EXTENSION);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
+        $user['image'] = $base64;
+        $user_obj['request'.$i] = $user['username'];
+        $user_obj['name'] = $user['username'];
+        $user_obj['image'] = $user['image'];
+
+
+            $user_requests[] = $user_obj;
+}
+}
+   echo json_encode($user_requests); 
 }
 else{
     $user_details['status'] = 'no friend requests';

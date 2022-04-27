@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -16,7 +17,7 @@ export class ProfilePage implements OnInit {
   name : string;
   username : string;
   total_rates : number;
-  requests : [];
+  requests :any [] =[];
  
 
   constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService) { }
@@ -35,7 +36,10 @@ export class ProfilePage implements OnInit {
         console.log(this.username);
      },100);
      this.user.getFriendRequests().subscribe(requests =>{
-      console.log(requests)
+      for(let i =0;i<Object.keys(requests).length;i++){
+       this.requests = requests;
+      }
+      console.log(this.requests); 
      })
     }
   settings(){
