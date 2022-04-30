@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content scroll-y="false">
     <ion-refresher slot="fixed" (ionRefresh)="refresh($event    )">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div>
-                <ion-item style="text-align: center; margin-top:70px;  --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                <ion-item style="text-align: center; margin-top:50px; font-style: italic;  --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
                     <ion-label>
                         Rates (Total): {{total_rates}}
                     </ion-label>
@@ -81,10 +81,27 @@
                     </ion-item>
                 </div>
             </div>
-
-            <ion-slides [options]="{'direction': 'horizontal'}">
-
-            </ion-slides>
+            <ion-content class="requests" scroll-x="true" scroll-y="false" style="margin-top: 40px">
+                <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
+                    <div fxFlex="25" style="background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);margin-right: 20px; " *ngFor="let request of requests">
+                        <div style="display: flex; flex-direction: column;">
+                            <ion-card style="width:120px;height:120px;">
+                                <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
+                                    <ion-card-subtitle style="color:white; font-size:11px; text-align: left; width: 130px;">
+                                        {{request.name}}
+                                    </ion-card-subtitle>
+                                    <ion-card-title style="color:white; font-size: 15px; text-align: left;">
+                                        @{{request.username}}
+                                    </ion-card-title>
+                                </ion-card-header>
+                                <img style="height:120px;width:120px; object-fit:cover" src="{{request.image}}">
+                            </ion-card>
+                            <ion-button style="width:120px;--background:transparent">ACCEPT</ion-button>
+                            <ion-button style="width:120px;--background:transparent">DECLINE</ion-button>
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
         </div>
     </div>
 </ion-content>

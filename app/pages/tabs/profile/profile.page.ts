@@ -35,12 +35,7 @@ export class ProfilePage implements OnInit {
         });
         console.log(this.username);
      },100);
-     this.user.getFriendRequests().subscribe(requests =>{
-      for(let i =0;i<Object.keys(requests).length;i++){
-       this.requests = requests;
-      }
-      console.log(this.requests); 
-     })
+    this.fetchFriendRequests();
     }
   settings(){
    this.modalCtrl.create({
@@ -57,7 +52,7 @@ export class ProfilePage implements OnInit {
       console.log('Page Refreshed');
       event.target.complete();
     }, 500);
-  
+    this.fetchFriendRequests();
   }
 
   fetchUserData(){
@@ -77,4 +72,12 @@ export class ProfilePage implements OnInit {
     });
   }
 
+  fetchFriendRequests(){
+    this.user.getFriendRequests().subscribe(requests =>{
+      for(let i =0;i<Object.keys(requests).length;i++){
+       this.requests = requests;
+      }
+      console.log(this.requests); 
+     })
+  }
 }

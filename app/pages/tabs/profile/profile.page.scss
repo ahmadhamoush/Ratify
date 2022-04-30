@@ -82,7 +82,7 @@ ion-item {
 }
 
 small {
-    position: relative;
+    position: absolute;
     margin: auto;
     margin: 0 20px;
     color: white;
@@ -91,16 +91,6 @@ small {
 small:hover,
 small:active {
     cursor: pointer;
-}
-
-.total_rates {
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 250px;
-    height: 20px;
-    border-radius: 70px;
-    border: 1px solid white;
-    transform: scale(0.9);
 }
 
 ion-progress-bar {
@@ -112,13 +102,18 @@ ion-progress-bar {
     top: 280px;
     border: 1px solid white;
     border-radius: 70px !important;
+    z-index: 2;
 }
 
 .username {
     position: relative;
     margin-right: 50%;
-    top: 33px;
+    top: 28px;
     font-weight: 300;
+}
+
+.requests::part(scroll) {
+    background-color: #2EA5BF;
 }
 
 @media (min-width: 500px) {
