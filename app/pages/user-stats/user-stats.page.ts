@@ -48,6 +48,14 @@ export class UserStatsPage{
         btn.innerHTML = 'Pending';
         this.pending = true;
       }
+      else if(response['status'] === 'Already Pending'){
+        btn.innerHTML = 'Pending';
+        this.pending = true;
+      }
+      else if(response['status'] === 'Friends'){
+        btn.innerHTML = 'Friends';
+        this.pending = true;
+      }
       else{
         this.pending = false;
         btn.innerHTML = 'Add Friend';

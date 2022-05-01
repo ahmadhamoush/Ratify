@@ -32,9 +32,9 @@ $results = $query->get_result();
         $src = "uploads/".$user['image'];
         $image = file_get_contents($src);
         $type = pathinfo($src, PATHINFO_EXTENSION);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image); 
         $user['image'] = $base64;
-        $user_obj['request'.$i] = $user['username'];
+        $user_obj['username'] = $user['username'];
         $user_obj['name'] = $user['username'];
         $user_obj['image'] = $user['image'];
 

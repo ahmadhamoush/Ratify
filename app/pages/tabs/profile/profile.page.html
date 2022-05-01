@@ -83,9 +83,9 @@
             </div>
             <ion-content class="requests" scroll-x="true" scroll-y="false" style="margin-top: 40px">
                 <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
-                    <div fxFlex="25" style="background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);margin-right: 20px; " *ngFor="let request of requests">
-                        <div style="display: flex; flex-direction: column;">
-                            <ion-card style="width:120px;height:120px;">
+                    <div fxFlex="25" style="background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);margin-right: 20px; " *ngFor="let request of requests;">
+                        <div class="card-container" style="display: flex; flex-direction: column;">
+                            <ion-card style="width:120px;height:120px; transition:1s;">
                                 <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
                                     <ion-card-subtitle style="color:white; font-size:11px; text-align: left; width: 130px;">
                                         {{request.name}}
@@ -96,11 +96,16 @@
                                 </ion-card-header>
                                 <img style="height:120px;width:120px; object-fit:cover" src="{{request.image}}">
                             </ion-card>
-                            <ion-button style="width:120px;--background:transparent">ACCEPT</ion-button>
-                            <ion-button style="width:120px;--background:transparent">DECLINE</ion-button>
+                            <ion-button title="{{request.username}}" (click)='accept_friend($event)' style="width:120px;--background:transparent;transition:1s;">ACCEPT</ion-button>
+                            <ion-button title="{{request.username}}" (click)='decline_friend($event)' style="width:120px;--background:transparent;transition:1s;">DECLINE</ion-button>
                         </div>
                     </div>
                 </div>
+                <ion-item id="no_friends" lines="none" style="--background:transparent; --ion-item-color:white; text-align: center; font-weight: bold; margin-top:50px;">
+                    <ion-label>
+                        No Friend Requests
+                    </ion-label>
+                </ion-item>
             </ion-content>
         </div>
     </div>

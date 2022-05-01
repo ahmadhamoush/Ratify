@@ -16,8 +16,8 @@ header("Access-Control-Allow-Credentials: true");
 
 $toBeAddedUser = strtolower($_GET['username']); 
 
-$query = $mysqli->prepare('SELECT * FROM friends WHERE friend_one =? AND friend_two =?');
-$query->bind_param('ss', $_SESSION['username'], $toBeAddedUser);
+$query = $mysqli->prepare('SELECT * FROM friends WHERE friend_one =? AND friend_two =? OR friend_one =? AND friend_two = ?');
+$query->bind_param('ssss', $_SESSION['username'], $toBeAddedUser, $toBeAddedUser, $_SESSION['username']);
 $query->execute();
 $results = $query->get_result();
 if($results->num_rows>0){

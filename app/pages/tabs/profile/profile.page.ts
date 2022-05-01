@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { response } from 'express';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class ProfilePage implements OnInit {
   username : string;
   total_rates : number;
   requests :any [] =[];
+  confirm_friend:string;
+  requested : string;
  
 
   constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService) { }
@@ -48,11 +51,11 @@ export class ProfilePage implements OnInit {
 
   refresh(event){
     this.fetchUserData();
+    this.fetchFriendRequests();
     setTimeout(() => {
       console.log('Page Refreshed');
       event.target.complete();
     }, 500);
-    this.fetchFriendRequests();
   }
 
   fetchUserData(){
@@ -73,11 +76,54 @@ export class ProfilePage implements OnInit {
   }
 
   fetchFriendRequests(){
+    var no_friends = document.getElementById('no_friends');
     this.user.getFriendRequests().subscribe(requests =>{
-      for(let i =0;i<Object.keys(requests).length;i++){
-       this.requests = requests;
+      if(requests['status']==='no friend requests'){
+        no_friends.style.display = 'block';
+      }else{
+        no_friends.style.display = 'none';
+        for(let i =0;i<Object.keys(requests).length;i++){
+          this.requests = requests;
+         }
+         
       }
       console.log(this.requests); 
      })
+  }
+  accept_friend(event){
+    var card = event.srcElement.previousSibling;
+    var btn1 = event.srcElement;
+    var btn2 = event.srcElement.nextSibling;
+    card.classList.add('moveUp');
+    btn1.classList.add('moveUp');
+    btn2.classList.add('moveUp'); 
+    this.requested = event.srcElement.title;
+    this.confirm_friend = 'accept';
+    const request ={
+      "status" : this.confirm_friend,
+      "requested": this.requested
+    }
+
+   
+    this.http.post('http://127.0.0.1/ratify/confirm_friend_request.php', JSON.stringify(request),{withCredentials:true}).subscribe((response:any)=>{
+      console.log(response);
+    })
+  }
+  decline_friend(event){
+    var card = event.srcElement.previousSibling.previousSibling;
+    var btn1 = event.srcElement;
+    var btn2 = event.srcElement.previousSibling;
+    card.classList.add('moveUp');
+    btn1.classList.add('moveUp');
+    btn2.classList.add('moveUp');
+    this.requested = event.srcElement.title;
+    this.confirm_friend = 'decline';
+    const request ={
+      "status" : this.confirm_friend,
+      "requested": this.requested
+    }
+    this.http.post('http://127.0.0.1/ratify/confirm_friend_request.php', JSON.stringify(request),{withCredentials:true}).subscribe((response:any)=>{
+      console.log(response);
+    })
   }
 }

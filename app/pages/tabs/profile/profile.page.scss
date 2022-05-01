@@ -116,6 +116,15 @@ ion-progress-bar {
     background-color: #2EA5BF;
 }
 
+ion-button:hover,
+:active {
+    --background: transparent;
+}
+
+.moveUp {
+    transform: translateY(-300px);
+}
+
 @media (min-width: 500px) {
     .round-bottom {
         width: 100%;
