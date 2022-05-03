@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
+import { FriendsPage } from '../../friends/friends.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { Router } from '@angular/router';
+import { FriendsPageModule } from 'src/app/pages/friends/friends.module';
 
 @Component({
   selector: 'app-profile',
@@ -47,6 +49,14 @@ export class ProfilePage implements OnInit {
      res.present();
    })
   }
+  friends(){
+    this.modalCtrl.create({
+      component: FriendsPage,
+      swipeToClose:true,
+    }).then(res =>{
+      res.present();
+    })
+   }
 
   refresh(event){
     this.fetchUserData();

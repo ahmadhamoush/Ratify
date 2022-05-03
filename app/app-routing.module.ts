@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'user-stats',
     loadChildren: () => import('./pages/user-stats/user-stats.module').then( m => m.UserStatsPageModule)
   },
+  {
+    path: 'friends',
+    loadChildren: () => import('./pages/friends/friends.module').then( m => m.FriendsPageModule)
+  },
 ];
 
 @NgModule({

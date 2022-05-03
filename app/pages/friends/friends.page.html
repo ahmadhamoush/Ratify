@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-item class="logo">
+            <ion-label>
+                Friends
+            </ion-label>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="round-bottom"></div>
+    <ion-card mode="ios" button="true" *ngFor="let friend of friends">
+        <div style="display:flex">
+            <ion-header>
+                <ion-card-title>@{{friend.username}}</ion-card-title>
+                <div style="display:flex">
+                    <ion-button style="color:#2EA5BF">Check Profile</ion-button>
+                    <ion-button style="color:red">Remove Friend</ion-button>
+                </div>
+            </ion-header>
+            <img src="{{friend.image}}" alt="">
+        </div>
+    </ion-card>
+</ion-content>

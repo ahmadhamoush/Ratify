@@ -107,9 +107,15 @@ ion-progress-bar {
 
 .username {
     position: relative;
-    margin-right: 50%;
-    top: 28px;
+    top: 48px;
     font-weight: 300;
+}
+
+.checkFriends {
+    position: relative;
+    top: 48px;
+    font-weight: 300;
+    width: 100px;
 }
 
 .requests::part(scroll) {
