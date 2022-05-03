@@ -21,6 +21,7 @@ export class UserStatsPage{
   fun : any;
   total_rates : any;
 
+  logged_user : boolean ;
   pending : boolean = false;
 
 
@@ -31,6 +32,12 @@ export class UserStatsPage{
     this.username = history.state.username;
     this.name = history.state.name;
     this.image = history.state.image;
+    this.logged_user = history.state.logged_user;
+    if(this.logged_user){
+    document.getElementById('friend_btn').style.opacity="0";
+    }else{
+      document.getElementById('friend_btn').style.opacity ="1";
+    }
     this.user.getRates(this.username).subscribe(rates =>{
       this.total_rates = rates['total_rates']/100;
       this.cute = rates['cute']/100;

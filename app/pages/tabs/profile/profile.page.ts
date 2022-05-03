@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
-import { response } from 'express';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +22,7 @@ export class ProfilePage implements OnInit {
   requested : string;
  
 
-  constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService) { }
+  constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService, private route :Router) { }
   
    
   ngOnInit() {
@@ -73,6 +72,13 @@ export class ProfilePage implements OnInit {
     .subscribe(data => {
         this.displayedImage = data;
     });
+  }
+  checkStats(){
+    setTimeout(()=>{
+     setTimeout(()=>{
+      this.route.navigate(['user-stats'], {state : {username: this.username, name:this.name,image:this.displayedImage, logged_user: true}});
+     },300);
+    },300);
   }
 
   fetchFriendRequests(){

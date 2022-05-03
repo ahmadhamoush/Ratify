@@ -23,10 +23,7 @@
                     <img src={{displayedImage}} id="img" alt="">
                 </ion-fab-button>
             </ion-fab>
-            <div style="display: flex; justify-content: center; position: relative; top:-60px">
-                <small>Change Profile Picture</small>
-                <small>Friends</small>
-            </div>
+
             <ion-item lines="none" class="name">
                 <ion-label>{{name}}</ion-label>
             </ion-item>
@@ -37,7 +34,7 @@
                 </div>
             </div>
             <div>
-                <ion-item style="text-align: center; margin-top:50px; font-style: italic;  --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                <ion-item style="text-align: center; margin-top:60px; font-style: italic;  --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
                     <ion-label>
                         Rates (Total): {{total_rates}}
                     </ion-label>
@@ -107,6 +104,8 @@
                     </ion-label>
                 </ion-item>
             </ion-content>
+
+            <small (click)="checkStats()" style="text-align: left; position: relative; font-size: 14px; font-weight: bold;">Check Stats</small>
         </div>
     </div>
 </ion-content>
