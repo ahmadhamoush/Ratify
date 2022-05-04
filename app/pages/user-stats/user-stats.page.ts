@@ -39,13 +39,23 @@ export class UserStatsPage{
       document.getElementById('friend_btn').style.opacity ="1";
     }
     this.user.getRates(this.username).subscribe(rates =>{
-      this.total_rates = rates['total_rates']/100;
-      this.cute = rates['cute']/100;
-      this.personality = rates['personality']/100;
-      this.hot = rates['hot']/100;
-      this.social = rates['social']/100;
-      this.fun = rates['fun']/100;
-      this.friendly = rates['friendly']/100;
+      if(rates['status']=== 'no rates'){
+        this.total_rates = 0;
+        this.cute = 0;
+        this.personality = 0;
+        this.hot = 0;
+        this.social =0;
+        this.fun = 0;
+        this.friendly =0;
+      }else{
+        this.total_rates = rates['total_rates']/100;
+        this.cute = rates['cute']/100;
+        this.personality = rates['personality']/100;
+        this.hot = rates['hot']/100;
+        this.social = rates['social']/100;
+        this.fun = rates['fun']/100;
+        this.friendly = rates['friendly']/100;
+      }
       console.log(rates);
     });
     this.user.getFriendRequestStatus(this.username).subscribe(response =>{

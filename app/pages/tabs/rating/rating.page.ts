@@ -67,7 +67,6 @@ export class RatingPage implements OnInit {
         (await toast).present();
       };
     },1000);
-    this.modalCtr.dismiss();
     }
   close(){
     this.modalCtr.dismiss(); //closing modal after rate submission
