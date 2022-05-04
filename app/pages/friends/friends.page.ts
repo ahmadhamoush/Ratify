@@ -56,5 +56,24 @@ export class FriendsPage implements OnInit {
     this.image_clicked = details[2];
     
   }
+  refresh(event){
+    var nofriends = document.getElementById('nofriends');
+    this.user.getFriends().subscribe(response =>{
+      if(response['status'] ==='no friends'){
+       nofriends.style.display='block';
+       this.friends = [];
+      }else{
+        nofriends.style.display='none';
+        for(let i =0;i<Object.keys.length;i++){
+          this.friends = response;
+        }
+      }
+            console.log(this.friends);
+    })
+    setTimeout(() => {
+      console.log('Page Refreshed');
+      event.target.complete();
+    }, 500);
+  }
 
 }
