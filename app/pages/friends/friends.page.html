@@ -1,25 +1,19 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-item class="logo">
-            <ion-label>
-                Friends
-            </ion-label>
-        </ion-item>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <div class="round-bottom"></div>
-    <ion-card mode="ios" button="true" *ngFor="let friend of friends">
-        <div style="display:flex">
-            <ion-header>
-                <ion-card-title>@{{friend.username}}</ion-card-title>
-                <div style="display:flex">
-                    <ion-button style="color:#2EA5BF">Check Profile</ion-button>
-                    <ion-button style="color:red">Remove Friend</ion-button>
-                </div>
+    <ion-item class="logo" lines="none">
+        Friends
+    </ion-item>
+
+    <ion-card title="{{friend.username}}?{{friend.name}}?{{friend.image}}" *ngFor="let friend of friends" (click)="option($event)" (click)="friendOptions()" mode="ios" button="true">
+        <div title="{{friend.username}}?{{friend.name}}?{{friend.image}}" style="display:flex">
+            <ion-header title="{{friend.username}}?{{friend.name}}?{{friend.image}}">
+                <ion-card-title title="{{friend.username}}?{{friend.name}}?{{friend.image}}">@{{friend.username}}</ion-card-title>
             </ion-header>
-            <img src="{{friend.image}}" alt="">
+            <img title="{{friend.username}}?{{friend.name}}?{{friend.image}}" src="{{friend.image}}" alt="">
         </div>
     </ion-card>
+    <ion-item id="nofriends" lines='none'>
+        <ion-label>
+            No Friends
+        </ion-label>
+    </ion-item>
 </ion-content>

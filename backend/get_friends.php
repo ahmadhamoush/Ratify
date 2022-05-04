@@ -44,7 +44,7 @@ $results = $query->get_result();
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image); 
         $user['image'] = $base64;
         $user_obj['username'] = $user['username'];
-        $user_obj['name'] = $user['username'];
+        $user_obj['name'] = $user['name'];
         $user_obj['image'] = $user['image'];
 
 

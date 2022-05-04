@@ -25,6 +25,7 @@ img {
     font-size: 40px;
     text-align: left;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 ion-header {
@@ -33,20 +34,17 @@ ion-header {
 }
 
 ion-header ion-card-title {
-    color: #2EA5BF;
     text-align: center;
+    color: #2EA5BF;
+    margin-top: 15px;
 }
 
 ion-header ion-card-subtitle {
     color: #2EA5BF;
     margin-left: 25px;
+    text-align: center;
 }
 
 ion-card {
     height: 80px;
-}
-
-ion-button {
-    --background: transparent;
-    --background-hover: transparent;
 }

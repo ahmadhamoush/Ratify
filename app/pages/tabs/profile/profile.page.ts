@@ -50,12 +50,7 @@ export class ProfilePage implements OnInit {
    })
   }
   friends(){
-    this.modalCtrl.create({
-      component: FriendsPage,
-      swipeToClose:true,
-    }).then(res =>{
-      res.present();
-    })
+    this.route.navigate(['friends']);
    }
 
   refresh(event){
