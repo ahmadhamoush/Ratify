@@ -29,6 +29,7 @@ export class SearchPage implements OnInit {
     .subscribe(data => {
         this.logged_in = data;
     });
+    setTimeout(async ()=>{
       if(!this.logged_in){
         this.route.navigate(['home']);
         const toast =  this.toastCtrl.create({
@@ -38,6 +39,7 @@ export class SearchPage implements OnInit {
         });
         (await toast).present();
       };
+    },1000);
     
     this.service.getName().subscribe(response=>{
       this.logged_user = response;

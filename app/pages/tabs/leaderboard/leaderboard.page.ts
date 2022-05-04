@@ -13,13 +13,12 @@ export class LeaderboardPage implements OnInit {
   logged_in:boolean;
   constructor(private user :GetUserDetailsService, private route:Router,private toastCtrl:ToastController) { }
 
-  ngOnInit() {
-  }
-  async ionViewWillEnter(){
+  async ngOnInit() {
     this.user.isLoggedIn()
     .subscribe(data => {
         this.logged_in = data;
     });
+    setTimeout(async ()=>{
       if(!this.logged_in){
         this.route.navigate(['home']);
         const toast =  this.toastCtrl.create({
@@ -29,5 +28,7 @@ export class LeaderboardPage implements OnInit {
         });
         (await toast).present();
       };
-    }
+    },1000)
+  }
+
 }

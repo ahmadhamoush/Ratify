@@ -14,11 +14,15 @@ header("Access-Control-Allow-Credentials: true");}
 
     $username = $_SESSION['username'];
     $status = 'Friends';
+    $friends_exist = false;
     $query = $mysqli->prepare("SELECT friend_one FROM friends WHERE friend_two = ? AND status =?");
     $query->bind_param('ss', $username, $status);
     $query->execute();
     $array = $query->get_result();
     if($array->num_rows>0){
+        $friends_exist =true;
+    }
+ 
      while($response = $array->fetch_assoc()){
         $friends_list[] = $response['friend_one'];
     }
@@ -26,12 +30,14 @@ header("Access-Control-Allow-Credentials: true");}
     $query->bind_param('ss', $username, $status);
     $query->execute();
     $array = $query->get_result();
-    if($array->num_rows>0){
+     if($array->num_rows>0){
+        $friends_exist =true;
+    }
      while($response = $array->fetch_assoc()){
         $friends_list[] = $response['friend_two'];
     }
-}
-
+ 
+if($friends_exist){
  for ($i=0; $i < count($friends_list) ; $i++) { 
       $query = $mysqli->prepare("SELECT * FROM users WHERE username = ?");
 $query->bind_param('s', $friends_list[$i]);
@@ -50,8 +56,8 @@ $results = $query->get_result();
 
             $user_requests[] = $user_obj;
 }
-}
-   echo json_encode($user_requests); 
+
+}  echo json_encode($user_requests); 
 }
 else{
     $user_details['status'] = 'no friends';

@@ -51,11 +51,12 @@ export class RatingPage implements OnInit {
     this.rated_name = this.navParams.get('name'); 
     this.rated_image = this.navParams.get('image');
   }
-  async ionViewWillEnter(){
+   ionViewWillEnter(){
     this.user.isLoggedIn()
     .subscribe(data => {
         this.logged_in = data;
     });
+    setTimeout(async ()=>{
       if(!this.logged_in){
         this.route.navigate(['home']);
         const toast =  this.toastCtrl.create({
@@ -65,6 +66,8 @@ export class RatingPage implements OnInit {
         });
         (await toast).present();
       };
+    },1000);
+    this.modalCtr.dismiss();
     }
   close(){
     this.modalCtr.dismiss(); //closing modal after rate submission

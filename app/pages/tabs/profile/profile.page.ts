@@ -32,16 +32,20 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     
     }
-   async ionViewWillEnter(){
+    ionViewWillEnter(){
       this.fetchUserData();
       if(!this.logged_in){
-        this.route.navigate(['home']);
-        const toast =  this.toastCtrl.create({
-          message : 'Session Expired. Please Login Again',
-          color : 'danger',
-          duration: 2000,
-        });
-        (await toast).present();
+        setTimeout(async ()=>{
+          if(!this.logged_in){
+            this.route.navigate(['home']);
+            const toast =  this.toastCtrl.create({
+              message : 'Session Expired. Please Login Again',
+              color : 'danger',
+              duration: 2000,
+            });
+            (await toast).present();
+          };
+        },1000)
       }
      setTimeout(()=>{
         this.user.getRates(this.username).subscribe(rates => {

@@ -25,11 +25,12 @@ export class FeedPage implements OnInit {
   ngOnInit() {
  
   }
-  async ionViewWillEnter(){
+   ionViewWillEnter(){
     this.userDetails.isLoggedIn()
     .subscribe(data => {
         this.logged_in = data;
     });
+    setTimeout(async ()=>{
       if(!this.logged_in){
         this.route.navigate(['home']);
         const toast =  this.toastCtrl.create({
@@ -39,6 +40,7 @@ export class FeedPage implements OnInit {
         });
         (await toast).present();
       };
+    },1000)
     this.createFeed();
     this.userDetails.getName().subscribe(data=>{
       this.username = data;

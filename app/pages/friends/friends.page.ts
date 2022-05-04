@@ -21,6 +21,7 @@ export class FriendsPage implements OnInit {
     this.user.getFriends().subscribe(response =>{
       if(response['status'] ==='no friends'){
        nofriends.style.display='block';
+       console.log(response);
       }else{
         nofriends.style.display='none';
         for(let i =0;i<Object.keys.length;i++){
