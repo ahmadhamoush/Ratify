@@ -1,5 +1,6 @@
 <?php  
 session_start();
+$_SESSION['logged_in'] = true;
 //starting session after signing up
 include('db_info.php');
 

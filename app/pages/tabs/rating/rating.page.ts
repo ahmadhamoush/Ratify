@@ -32,6 +32,8 @@ export class RatingPage implements OnInit {
     rated_name : string;
     rated_image : string;
 
+    logged_in:boolean;
+
   ngOnInit() {
     this.cute = 0; //initialzing rate =0
     this.cute_bool = []; // storing active stars
@@ -49,6 +51,21 @@ export class RatingPage implements OnInit {
     this.rated_name = this.navParams.get('name'); 
     this.rated_image = this.navParams.get('image');
   }
+  async ionViewWillEnter(){
+    this.user.isLoggedIn()
+    .subscribe(data => {
+        this.logged_in = data;
+    });
+      if(!this.logged_in){
+        this.route.navigate(['home']);
+        const toast =  this.toastCtrl.create({
+          message : 'Session Expired. Please Login Again',
+          color : 'danger',
+          duration: 2000,
+        });
+        (await toast).present();
+      };
+    }
   close(){
     this.modalCtr.dismiss(); //closing modal after rate submission
   }

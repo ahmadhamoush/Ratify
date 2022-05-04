@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { SettingsModalPage } from 'src/app/pages/settings-modal/settings-modal.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
@@ -17,20 +18,31 @@ export class ProfilePage implements OnInit {
   displayedImage : string;
   name : string;
   username : string;
+  logged_in : boolean;
   total_rates : number;
   requests :any [] =[];
   confirm_friend:string;
   requested : string;
  
 
-  constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService, private route :Router) { }
+  constructor(private http : HttpClient, private modalCtrl : ModalController, private user : GetUserDetailsService, private route :Router,
+    private toastCtrl :ToastController) { }
   
    
   ngOnInit() {
     
     }
-    ionViewWillEnter(){
+   async ionViewWillEnter(){
       this.fetchUserData();
+      if(!this.logged_in){
+        this.route.navigate(['home']);
+        const toast =  this.toastCtrl.create({
+          message : 'Session Expired. Please Login Again',
+          color : 'danger',
+          duration: 2000,
+        });
+        (await toast).present();
+      }
      setTimeout(()=>{
         this.user.getRates(this.username).subscribe(rates => {
           console.log(rates);
@@ -75,6 +87,10 @@ export class ProfilePage implements OnInit {
     this.user.getImage()
     .subscribe(data => {
         this.displayedImage = data;
+    });
+    this.user.isLoggedIn()
+    .subscribe(data => {
+        this.logged_in = data;
     });
   }
   checkStats(){

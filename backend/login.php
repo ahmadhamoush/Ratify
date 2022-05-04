@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['logged_in'] = true;
 include('db_info.php');
 	
 //setting headers

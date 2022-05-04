@@ -3,7 +3,7 @@ import { NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-friend-options',

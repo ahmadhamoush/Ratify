@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { RatingPage } from '../rating/rating.page';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -14,15 +16,29 @@ export class FeedPage implements OnInit {
 
   users :any [] =[];
   username : any;
+  logged_in : boolean;
  
- 
-  constructor(private http : HttpClient, private modalCtrl : ModalController, private userDetails : GetUserDetailsService) { }
+  constructor(private http : HttpClient, private modalCtrl : ModalController, private userDetails : GetUserDetailsService,
+    private toastCtrl:ToastController, private route:Router) { }
    
 
   ngOnInit() {
  
   }
-  ionViewWillEnter(){
+  async ionViewWillEnter(){
+    this.userDetails.isLoggedIn()
+    .subscribe(data => {
+        this.logged_in = data;
+    });
+      if(!this.logged_in){
+        this.route.navigate(['home']);
+        const toast =  this.toastCtrl.create({
+          message : 'Session Expired. Please Login Again',
+          color : 'danger',
+          duration: 2000,
+        });
+        (await toast).present();
+      };
     this.createFeed();
     this.userDetails.getName().subscribe(data=>{
       this.username = data;

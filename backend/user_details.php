@@ -32,6 +32,7 @@ header("Access-Control-Allow-Credentials: true");}
         $user_details['username'] = $user['username'];
         $user_details['name'] = $user['name'];
         $user_details['image'] = $base64;
+        $user_details['logged_in'] = $_SESSION['logged_in'];
        
         echo json_encode($user_details);
 }

@@ -22,6 +22,10 @@ export class GetUserDetailsService {
     return this.http.get('http://127.0.0.1/ratify/user_details.php', {withCredentials:true})
     .pipe(map((response: any) => response['name']));
    }
+   isLoggedIn(): Observable<any> {
+    return this.http.get('http://127.0.0.1/ratify/user_details.php', {withCredentials:true})
+    .pipe(map((response: any) => response['logged_in']));
+   }
    getRates(username) : Observable<any>{
      return this.http.post(`http://127.0.0.1/ratify/get_users_rates.php?username=${username}`, JSON.stringify(username), {withCredentials:true})
     .pipe(map((response:any)=>response));

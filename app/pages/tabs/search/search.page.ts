@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetUserDetailsService } from 'src/app/apis/get-user-details.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
@@ -12,17 +13,32 @@ export class SearchPage implements OnInit {
   searchFilter : any;
   users :any [] =[];
   logged_user : any;
+  logged_in :boolean
 
   searched_user : any;
   searched_name :any;
   searched_image :any;
   
-  constructor(private service : GetUserDetailsService, private route:Router) { }
+  constructor(private service : GetUserDetailsService, private route:Router, private toastCtrl:ToastController) { }
 
   ngOnInit() {
     
   }
-  ionViewWillEnter(){
+  async ionViewWillEnter(){
+    this.service.isLoggedIn()
+    .subscribe(data => {
+        this.logged_in = data;
+    });
+      if(!this.logged_in){
+        this.route.navigate(['home']);
+        const toast =  this.toastCtrl.create({
+          message : 'Session Expired. Please Login Again',
+          color : 'danger',
+          duration: 2000,
+        });
+        (await toast).present();
+      };
+    
     this.service.getName().subscribe(response=>{
       this.logged_user = response;
     })
