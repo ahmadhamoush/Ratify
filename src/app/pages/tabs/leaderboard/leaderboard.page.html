@@ -1,0 +1,87 @@
+<ion-content scroll-y="false" scroll-x="false">
+    <div class="container">
+
+
+        <div class="round-top"></div>
+        <div>
+            <ion-item lines="none" class="logo">
+                <ion-label>
+                    Ratify
+                </ion-label>
+            </ion-item>
+            <ion-item class="top10" lines="none">
+                <ion-label>
+                    Top 10 Rated:
+                </ion-label>
+            </ion-item>
+        </div>
+    </div>
+</ion-content>
+<ion-content class="content1" style="position:absolute;" scroll-x="true" scroll-y='false'>
+    <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
+        <div fxFlex="25" style="margin-right: 40px; margin-left:30px " *ngFor="let request of top_10;">
+            <ion-card (click)="viewProfile($event)" title="{{request.username}}?{{request.name}}?{{request.image}}" button="true" style="width:150px;height:150px; transition:1s;">
+                <ion-card-header title="{{request.username}}?{{request.name}}?{{request.image}}" style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
+                    <ion-card-subtitle title="{{request.username}}?{{request.name}}?{{request.image}}" style="color:white; font-size:11px; text-align: left; width: 150px;">
+                        {{request.name}}
+                    </ion-card-subtitle>
+                    <ion-card-title title="{{request.username}}?{{request.name}}?{{request.image}}" style="color:white; font-size: 15px; text-align: left;">
+                        @{{request.username}}
+                    </ion-card-title>
+                </ion-card-header>
+                <img title="{{request.username}}?{{request.name}}?{{request.image}}" style="height:150px;width:150px; object-fit:cover" src="{{request.image}}">
+            </ion-card>
+        </div>
+    </div>
+</ion-content>
+<ion-content class="content2" style="position:absolute;" scroll-x="false" scroll-y='false'>
+    <ion-item class="toprated" lines="none">
+        <ion-label>
+            Top Rated User:
+        </ion-label>
+    </ion-item>
+    <div class="top_rated_container" *ngFor='let top_rated of top_10; first as isFirst'>
+        <ion-card (click)="viewProfile($event)" title="{{top_rated.username}}?{{top_rated.name}}?{{top_rated.image}}" *ngIf="isFirst" button="true" style="width:180px;height:180px; transition:1s;">
+            <ion-card-header title="{{top_rated.username}}?{{top_rated.name}}?{{top_rated.image}}" style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
+                <ion-card-subtitle title="{{top_rated.username}}?{{top_rated.name}}?{{top_rated.image}}" style="color:white; font-size:11px; text-align: left; width: 180px;">
+                    {{top_rated.name}}
+                </ion-card-subtitle>
+                <ion-card-title title="{{top_rated.username}}?{{top_rated.name}}?{{top_rated.image}}" style="color:white; font-size: 15px; text-align: left;">
+                    @{{top_rated.username}}
+                </ion-card-title>
+            </ion-card-header>
+            <img title="{{top_rated.username}}?{{top_rated.name}}?{{top_rated.image}}" style="height:180px;width:180px; object-fit:cover" src="{{top_rated.image}}">
+        </ion-card>
+    </div>
+</ion-content>
+<ion-content class="content3" scroll-y="false" scroll-x="false" style="position:relative;">
+    <ion-item style="position: fixed; z-index:2;" class="toprated" lines="none">
+        <ion-label>
+            Friends Leaderboard:
+        </ion-label>
+    </ion-item>
+    <ion-slides id="friend_slides" [options]="{'direction': 'vertical'}">
+        <ion-slide *ngFor="let friend of friends_leaderboard; let i =index;">
+            <ion-card-header>
+                <ion-card-title style="font-size: 15px;" color="light">{{friend.name}}</ion-card-title>
+                <ion-card-subtitle style="font-weight: 400;" color="light">@{{friend.username}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-item lines="none" class="rank">
+                <ion-label>
+                    #{{i+1}}
+                </ion-label>
+            </ion-item>
+            <ion-card (click)="viewProfile($event)" mode="ios" title="{{friend.username}}?{{friend.name}}?{{friend.image}}" class="leaderboard" button='true'>
+                <img title="{{friend.username}}?{{friend.name}}?{{friend.image}}" id="friend_img" src={{friend.image}} alt="">
+                <div>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+    <ion-item class="no_friends" lines="none">
+        <ion-label>
+            No Friends
+        </ion-label>
+    </ion-item>
+</ion-content>
+<div class="round-bottom"></div>

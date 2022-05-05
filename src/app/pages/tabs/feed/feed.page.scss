@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-style: oblique;
+}
+
+.round-bottom {
+    border-top-left-radius: 100% 170px !important;
+    border-top-right-radius: 100% 170px !important;
+    overflow: hidden;
+    position: absolute;
+    /* Ellipse 1 */
+    bottom: 0;
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    /* Ellipse 1 */
+    width: 100%;
+    height: 20px;
+    z-index: 2;
+}
+
+.round-top {
+    border-bottom-left-radius: 50% 150px !important;
+    border-bottom-right-radius: 50% 150px !important;
+    overflow: hidden;
+    position: fixed;
+    /* Ellipse 1 */
+    top: 0;
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    /* Ellipse 1 */
+    width: 864px;
+    height: 150px;
+    left: -248px;
+    z-index: 2;
+}
+
+.container {
+    width: 100%;
+    height: 100% !important;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 40px;
+    position: fixed;
+    left: 2%;
+    top: 2%;
+    width: 100%;
+    text-align: left;
+    z-index: 2;
+}
+
+ion-item {
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    --ion-item-color: white;
+}
+
+.usercard {
+    transition: 0.8s;
+    --ion-item-color: white;
+    color: white;
+    border-radius: 20px;
+    width: 351px;
+    height: 351px;
+    box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+    max-width: 100%;
+    margin-top: 50px;
+}
+
+.usercard:hover,
+.usercard:active {
+    box-shadow: 0px 10px 30px lightblue;
+}
+
+ion-card-header {
+    position: absolute;
+    top: 50;
+    z-index: 1;
+    margin: 5px;
+}
+
+#img {
+    width: 351px;
+    height: 351px;
+    object-fit: cover;
+}
+
+.move {
+    transform: translateY(-150px);
+}
+
+.desc {
+    position: absolute;
+    color: #2EA5BF;
+    margin-top: 450px;
+}
+
+@media (min-width: 500px) {
+    .round-top {
+        width: 100%;
+        top: 0;
+        height: 150px;
+        left: 0;
+        border-bottom-left-radius: 100% 150px !important;
+        border-bottom-right-radius: 100% 150px !important;
+    }
+}
+
+@media (max-width: 413px) {
+    .usercard {
+        width: 271px;
+        height: 271px;
+    }
+    #img {
+        width: 271px;
+        height: 271px;
+    }
+}
+
+@media (max-width: 320px) {
+    .usercard {
+        width: 251px;
+        height: 251px;
+    }
+    #img {
+        width: 251px;
+        height: 251px;
+    }
+    .round-top {
+        height: 140px;
+    }
+}

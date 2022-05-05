@@ -1,0 +1,4 @@
+target 'Ratify' do
+    use_frameworks!
+    pod 'Cocoapod', '~> 3.0'
+  end

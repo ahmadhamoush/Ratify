@@ -1,0 +1,32 @@
+<ion-content scroll-y="false">
+    <div class="container">
+
+        <div class="round-bottom"></div>
+
+        <div>
+            <ion-item lines="none" class="logo">
+                <ion-label>
+                    Ratify
+                </ion-label>
+            </ion-item>
+            <ion-searchbar mode="ios" debounce="500" placeholder="eg: @John Smith" [(ngModel)]='searchFilter'> </ion-searchbar>
+        </div>
+
+        <ion-content scroll-y="true">
+            <ng-container *ngFor="let user of users | filter : searchFilter">
+                <ion-card mode="ios" title="{{user.username}}?{{user.name}}?{{user.image}}" (click)='search($event)' class="searchItems" *ngIf="logged_user != user.name" button='true'>
+                    <ion-fab-button class="image-container">
+                        <img src={{user.image}} id="img" alt="">
+                    </ion-fab-button>
+                    <div>
+                        <ion-card-header>
+                            <ion-card-title title="{{user.username}}?{{user.name}}?{{user.image}}" style="font-size: 15px;" color="light">{{user.name}}</ion-card-title>
+                            <ion-card-subtitle title="{{user.username}}?{{user.name}}?{{user.image}}" style="font-weight: 400;" color="light">@{{user.username}}</ion-card-subtitle>
+                        </ion-card-header>
+                    </div>
+                </ion-card>
+            </ng-container>
+        </ion-content>
+
+    </div>
+</ion-content>

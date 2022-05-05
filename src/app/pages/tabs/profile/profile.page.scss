@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.round-bottom {
+    border-top-left-radius: 50% 150px !important;
+    border-top-right-radius: 50% 150px !important;
+    overflow: hidden;
+    position: absolute;
+    /* Ellipse 1 */
+    bottom: 0;
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    /* Ellipse 1 */
+    width: 864px;
+    height: 480px;
+    left: -220px;
+}
+
+.container {
+    width: 100%;
+    height: 100% !important;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 40px;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 100%;
+    text-align: left;
+}
+
+ion-item {
+    // --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    --ion-item-color: #2EA5BF;
+}
+
+.settings-icon {
+    transform: scale(1.2);
+}
+
+.image-container {
+    position: absolute;
+    top: -75px;
+    right: -30px;
+    transform: scale(3);
+    border-radius: 100%;
+    transition: 0.8s;
+    background-color: #2EA5BF;
+}
+
+.image-container:hover,
+.image-container:active {
+    box-shadow: 0 0 10px lightblue;
+}
+
+#img {
+    height: 60px;
+    width: 70px;
+    object-fit: cover;
+}
+
+.name {
+    position: absolute;
+    top: 60px;
+    left: 2%;
+    font-size: larger;
+    --background: transparent;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+small {
+    position: absolute;
+    margin: auto;
+    margin: 0 20px;
+    color: white;
+}
+
+small:hover,
+small:active {
+    cursor: pointer;
+}
+
+ion-progress-bar {
+    position: absolute;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 20px;
+    height: 20px;
+    top: 280px;
+    border: 1px solid white;
+    border-radius: 70px !important;
+    z-index: 2;
+}
+
+.rates {
+    text-align: center;
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    color: white
+}
+
+.rates-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-container {
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    margin-right: 30px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-card {
+    width: 120px;
+    height: 120px;
+    transition: 1s;
+    box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
+    border-radius: 10px;
+}
+
+.request-card ion-card-header {
+    background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
+    padding-left: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.request-card ion-card-header ion-card-subtitle {
+    color: white;
+    font-size: 10px;
+    text-align: left;
+    width: 130px;
+}
+
+.request-card ion-card-header ion-card-title {
+    color: white;
+    font-size: 14px;
+    text-align: left;
+}
+
+.request-img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover
+}
+
+.total_rates {
+    text-align: center;
+    margin-top: 60px;
+    font-style: italic;
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    color: white
+}
+
+.username {
+    position: relative;
+    top: 48px;
+    font-weight: 300;
+}
+
+.checkFriends {
+    position: relative;
+    top: 48px;
+    font-weight: 300;
+    width: 100px;
+}
+
+.check-friends-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.requests::part(scroll) {
+    background-color: #2EA5BF;
+}
+
+ion-button:hover,
+:active {
+    --background: transparent;
+}
+
+.moveUp {
+    transform: translateY(-300px);
+}
+
+.check-stats {
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+ion-button {
+    width: 120px;
+    --background: transparent;
+    transition: 1s;
+    --background-hover: #eee;
+    --color-hover: black
+}
+
+#no_friends {
+    --background: transparent;
+    --ion-item-color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+@media (min-width: 500px) {
+    .round-bottom {
+        width: 100%;
+        left: 0;
+        border-top-left-radius: 100% 150px !important;
+        border-top-right-radius: 100% 150px !important;
+    }
+    .image-container {
+        transform: scale(3.5);
+    }
+}
+
+@media (max-width: 375px) {
+    .image-container {
+        transform: scale(2.8);
+        top: -55px;
+    }
+    .round-bottom {
+        height: 400px;
+    }
+    ion-progress-bar {
+        top: 285px;
+    }
+    .check-stats {
+        position: absolute;
+        top: 600px;
+        left: 125px;
+    }
+    .total_rates {
+        margin-top: 40px;
+    }
+    .checkFriends {
+        z-index: 2;
+    }
+    .username {
+        z-index: 2;
+    }
+}
+
+@media (max-width: 320px) {
+    .image-container {
+        transform: scale(2.4);
+        top: -55px;
+    }
+    .round-bottom {
+        height: 350px;
+    }
+    ion-progress-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 390px) {
+    ion-progress-bar {
+        top: 335px;
+    }
+    .total_rates {
+        margin-top: 65px;
+    }
+}
