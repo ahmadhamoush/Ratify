@@ -1,0 +1,9 @@
+{
+    "name": "Ratify",
+    "integrations": {
+        "capacitor": {},
+        "cordova": {}
+    },
+    "type": "angular"
+
+}
