@@ -49,4 +49,12 @@ export class GetUserDetailsService {
     return this.http.get('http://127.0.0.1/ratify/get_friends.php', {withCredentials:true})
     .pipe(map((response:any)=>response));
   }
+  getFriendsLeaderBoard() : Observable<any>{
+    return this.http.get('http://127.0.0.1/ratify/friends_leaderboard.php', {withCredentials:true})
+    .pipe(map((response:any)=>response));
+  }
+  getTop10Rated() : Observable<any>{
+    return this.http.get('http://127.0.0.1/ratify/top_10_rated.php', {withCredentials:true})
+    .pipe(map((response:any)=>response));
+  }
 }

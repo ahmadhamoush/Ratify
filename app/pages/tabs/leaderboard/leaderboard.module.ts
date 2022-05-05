@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LeaderboardPageRoutingModule } from './leaderboard-routing.module';
 
 import { LeaderboardPage } from './leaderboard.page';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LeaderboardPageRoutingModule
+    LeaderboardPageRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [LeaderboardPage]
 })

@@ -37,10 +37,14 @@ header("Access-Control-Allow-Credentials: true");}
     $rates['friendly'] = round(array_sum($friendly)/sizeof($friendly));
     $rates['fun'] = round(array_sum($fun)/sizeof($fun));
     $rates['total_rates'] = $array->num_rows;
+     //updating total_rates in database
+      $query = $mysqli->prepare('UPDATE users SET total_rates = ? WHERE username =?');
+    $query->bind_param('ss',$rates['total_rates'], $username);
+    $query->execute();
     echo json_encode($rates); 
 }
 else{
-    $user_details['status'] = 'no users';
+    $user_details['status'] = 'no rates';
     echo json_encode($user_details);
   
 }

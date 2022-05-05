@@ -85,19 +85,21 @@
                 <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
                     <div fxFlex="25" style="background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);margin-right: 20px; " *ngFor="let request of requests;">
                         <div class="card-container" style="display: flex; flex-direction: column;">
-                            <ion-card style="width:120px;height:120px; transition:1s;">
+                            <ion-card style="width:120px;height:120px; transition:1s; box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+                            filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
+                            border-radius: 10px;">
                                 <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
-                                    <ion-card-subtitle style="color:white; font-size:11px; text-align: left; width: 130px;">
+                                    <ion-card-subtitle style="color:white; font-size:10px; text-align: left; width: 130px;">
                                         {{request.name}}
                                     </ion-card-subtitle>
-                                    <ion-card-title style="color:white; font-size: 15px; text-align: left;">
+                                    <ion-card-title style="color:white; font-size: 14px; text-align: left;">
                                         @{{request.username}}
                                     </ion-card-title>
                                 </ion-card-header>
                                 <img style="height:120px;width:120px; object-fit:cover" src="{{request.image}}">
                             </ion-card>
-                            <ion-button title="{{request.username}}" (click)='accept_friend($event)' style="width:120px;--background:transparent;transition:1s;">ACCEPT</ion-button>
-                            <ion-button title="{{request.username}}" (click)='decline_friend($event)' style="width:120px;--background:transparent;transition:1s;">DECLINE</ion-button>
+                            <ion-button title="{{request.username}}" (click)='accept_friend($event)' style="width:120px;--background:transparent;transition:1s;--background-hover: #eee;--color-hover:black">ACCEPT</ion-button>
+                            <ion-button title="{{request.username}}" (click)='decline_friend($event)' style="width:120px;--background:transparent;transition:1s;--background-hover: #eee; --color-hover:black;">DECLINE</ion-button>
                         </div>
                     </div>
                 </div>

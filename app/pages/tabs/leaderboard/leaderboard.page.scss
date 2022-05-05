@@ -30,6 +30,7 @@
     width: 864px;
     height: 150px;
     left: -248px;
+    z-index: 2;
 }
 
 .container {
@@ -49,11 +50,46 @@
     top: 2%;
     width: 100%;
     text-align: left;
-}
-
-ion-item {
     --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
     --ion-item-color: white;
+    z-index: 2;
+}
+
+.top10 {
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    --ion-item-color: white;
+    position: absolute;
+    z-index: 2;
+    top: 90px;
+    left: 2%;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.toprated {
+    --ion-item-color: #2EA5BF;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: oblique;
+}
+
+.top_rated_container {
+    // position: fixed;
+    width: 50%;
+    margin-top: 5px;
+}
+
+.top_rated_container ion-card {
+    left: 50%;
+    max-width: 100%;
+    margin: auto;
+}
+
+ion-card {
+    box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
 }
 
 @media (min-width: 500px) {

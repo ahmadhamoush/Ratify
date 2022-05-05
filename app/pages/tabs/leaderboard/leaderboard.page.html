@@ -1,15 +1,57 @@
-<ion-content>
+<ion-content scroll-y="false" scroll-x="false">
     <div class="container">
 
-        <div class="round-bottom"></div>
+
         <div class="round-top"></div>
         <div>
             <ion-item lines="none" class="logo">
                 <ion-label>
                     Ratify
                 </ion-label>
-
+            </ion-item>
+            <ion-item class="top10" lines="none">
+                <ion-label>
+                    Top 10 Rated:
+                </ion-label>
             </ion-item>
         </div>
     </div>
 </ion-content>
+<ion-content style="position:absolute;top:120px;" scroll-x="true" scroll-y='false'>
+    <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
+        <div fxFlex="25" style="margin-right: 40px; margin-left:30px " *ngFor="let request of top_10;">
+            <ion-card button="true" style="width:150px;height:150px; transition:1s;">
+                <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
+                    <ion-card-subtitle style="color:white; font-size:11px; text-align: left; width: 150px;">
+                        {{request.name}}
+                    </ion-card-subtitle>
+                    <ion-card-title style="color:white; font-size: 15px; text-align: left;">
+                        @{{request.username}}
+                    </ion-card-title>
+                </ion-card-header>
+                <img style="height:150px;width:150px; object-fit:cover" src="{{request.image}}">
+            </ion-card>
+        </div>
+    </div>
+</ion-content>
+<ion-content style="position:absolute;top:290px;" scroll-x="false" scroll-y='false'>
+    <ion-item class="toprated" lines="none">
+        <ion-label>
+            Top Rated User:
+        </ion-label>
+    </ion-item>
+    <div class="top_rated_container" *ngFor='let top_rated of top_10; first as isFirst'>
+        <ion-card *ngIf="isFirst" button="true" style="width:180px;height:180px; transition:1s;">
+            <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
+                <ion-card-subtitle style="color:white; font-size:11px; text-align: left; width: 180px;">
+                    {{top_rated.name}}
+                </ion-card-subtitle>
+                <ion-card-title style="color:white; font-size: 15px; text-align: left;">
+                    @{{top_rated.username}}
+                </ion-card-title>
+            </ion-card-header>
+            <img style="height:180px;width:180px; object-fit:cover" src="{{top_rated.image}}">
+        </ion-card>
+    </div>
+</ion-content>
+<div class="round-bottom"></div>

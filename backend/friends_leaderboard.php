@@ -12,7 +12,7 @@ header('Access-Control-Max-Age: 86400');
 header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
 
-    $username = 'chloe_s';
+    $username = $_SESSION['username'];
     $status = 'Friends';
     $friends_exist = false;
     $query = $mysqli->prepare("SELECT friend_one FROM friends WHERE friend_two = ? AND status =?");
@@ -51,9 +51,8 @@ $results = $query->get_result();
         $user['image'] = $base64;
         $user_obj['username'] = $user['username'];
         $user_obj['name'] = $user['name'];
-        // $user_obj['image'] = $user['image'];
+        $user_obj['image'] = $user['image'];
         $user_obj['total_rates'] = $user['total_rates'];
-
 
             $user_requests[] = $user_obj;
 }
