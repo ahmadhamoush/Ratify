@@ -3,7 +3,7 @@
 # Installation 
 -  Clone Repository
 -  run ionic serve command
--  install @agnular/cli
+-  install @angular/cli
 
 # Database 
 - You will find the database content in the database folder 
@@ -20,3 +20,5 @@
 
 # Overview
 - Ratify is an app where people rate and get rated anonymously!
+- 
+<img src="https://res.cloudinary.com/pcrs/image/upload/v1651787835/ratify_ktyvgv.png" alt="Alt text" title="Optional title">
