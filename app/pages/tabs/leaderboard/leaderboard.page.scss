@@ -75,7 +75,6 @@
 }
 
 .top_rated_container {
-    // position: fixed;
     width: 50%;
     margin-top: 5px;
 }
@@ -90,6 +89,50 @@ ion-card {
     box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
     filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
     border-radius: 20px;
+}
+
+ion-slide ion-card {
+    width: 120px;
+    height: 120px;
+    transition: 1s;
+    margin-bottom: 220px;
+    border-radius: 100px;
+}
+
+ion-slide ion-card-header ion-card-subtitle {
+    font-style: italic;
+    font-size: bold;
+    font-size: 20px;
+    margin-top: 2px;
+    z-index: 2;
+    color: #2EA5BF;
+}
+
+ion-slide ion-card-header ion-card-title {
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 10px;
+    color: #2EA5BF;
+}
+
+ion-slide ion-card-header {
+    margin-bottom: 200px;
+    margin-right: 30px;
+}
+
+#friend_img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.rank {
+    margin-bottom: 200px;
+    --ion-item-color: #2EA5BF;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
 }
 
 @media (min-width: 500px) {

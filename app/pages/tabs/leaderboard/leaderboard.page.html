@@ -54,4 +54,29 @@
         </ion-card>
     </div>
 </ion-content>
+<ion-content scroll-y="true" scroll-x="false" style="position:relative;top:200px;">
+    <ion-item style="position: fixed; z-index:2;" class="toprated" lines="none">
+        <ion-label>
+            Friends Leaderboard:
+        </ion-label>
+    </ion-item>
+    <ion-slides [options]="{'direction': 'vertical'}">
+        <ion-slide *ngFor="let friend of friends_leaderboard; let i =index;">
+            <ion-card-header>
+                <ion-card-title title="{{friend.username}}?{{friend.name}}?{{friend.image}}" style="font-size: 15px;" color="light">{{friend.name}}</ion-card-title>
+                <ion-card-subtitle title="{{friend.username}}?{{friend.name}}?{{friend.image}}" style="font-weight: 400;" color="light">@{{friend.username}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-item lines="none" class="rank">
+                <ion-label>
+                    #{{i+1}}
+                </ion-label>
+            </ion-item>
+            <ion-card mode="ios" title="{{friend.username}}?{{friend.name}}?{{friend.image}}" class="leaderboard" button='true'>
+                <img id="friend_img" src={{friend.image}} alt="">
+                <div>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
 <div class="round-bottom"></div>
