@@ -16,7 +16,7 @@ header("Access-Control-Allow-Credentials: true");}
 $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request = json_decode($postdata);
  $username = $request; 
   }
-
+    //checking if username is not empty
    if(isset($_POST['username'])){
     $_POST['username'] = $username; 
    }
@@ -33,6 +33,7 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
   $user_details = json_encode($user_details);
     echo $user_details;
    }
+   //if new username == to current username
    else if($username == $_SESSION['username']){
     $user_details['username'] = $username;
     $user_details['status'] = "Can't change your own username!";
@@ -45,6 +46,7 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
     $query = $mysqli->prepare("UPDATE users SET username = ? WHERE username = ?");
     $query->bind_param("ss", $username, $_SESSION['username']);
     $query->execute();
+    //storing user details to be sent
     $user_details['new'] =$username;
     $user_details['old'] =$_SESSION['username'];
     $user_details['status'] = 'success';

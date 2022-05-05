@@ -13,8 +13,9 @@ header('Access-Control-Max-Age: 86400');
 header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
 
+//destroying and unsetting setting on logout
 session_unset();
 session_destroy();
-$status['status'] = 'Logout Success';
+$status['status'] = 'Logout Success'; //logout status
 echo json_encode($status);
 ?>

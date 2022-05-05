@@ -14,7 +14,7 @@
             </ion-item>
             <ion-item class="settings" lines="none">
 
-                <ion-icon (click)="settings()" style="transform: scale(1.2);" name="settings-outline"></ion-icon>
+                <ion-icon (click)="settings()" class="settings-icon" name="settings-outline"></ion-icon>
 
             </ion-item>
 
@@ -28,53 +28,53 @@
                 <ion-label>{{name}}</ion-label>
             </ion-item>
             <div>
-                <div style="display: flex; justify-content: center;">
+                <div class="check-friends-container">
                     <small class=" username ">@{{username}}</small>
                     <small (click)="friends()" class="checkFriends">Check Friends</small>
                 </div>
-                <div style="display: flex;flex-direction: column; align-items: flex-start; ">
+                <div class="bar-container">
                     <ion-progress-bar color="light " value="{{total_rates/100}} "></ion-progress-bar>
                 </div>
             </div>
             <div>
-                <ion-item style="text-align: center; margin-top:65px; font-style: italic;  --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                <ion-item class="total_rates" lines="none">
                     <ion-label>
                         Rates (Total): {{total_rates}}
                     </ion-label>
                 </ion-item>
             </div>
-            <div style="display: flex; justify-content: center;">
+            <div class="rates-container">
                 <div>
-                    <ion-item style="text-align: center;--ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             Today
                         </ion-label>
                     </ion-item>
-                    <ion-item style="text-align: center; --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             0
                         </ion-label>
                     </ion-item>
                 </div>
                 <div>
-                    <ion-item style="text-align: center; --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             This Week
                         </ion-label>
                     </ion-item>
-                    <ion-item style="text-align: center; --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             0
                         </ion-label>
                     </ion-item>
                 </div>
                 <div>
-                    <ion-item style="text-align: center; --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             This Month
                         </ion-label>
                     </ion-item>
-                    <ion-item style="text-align: center; --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%); color:white" lines="none">
+                    <ion-item class="rates" lines="none">
                         <ion-label>
                             0
                         </ion-label>
@@ -83,34 +83,32 @@
             </div>
             <ion-content class="requests" scroll-x="true" scroll-y="false" style="margin-top: 40px">
                 <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="32px 12px grid">
-                    <div fxFlex="25" style="background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);margin-right: 20px; " *ngFor="let request of requests;">
-                        <div class="card-container" style="display: flex; flex-direction: column;">
-                            <ion-card style="width:120px;height:120px; transition:1s; box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
-                            filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
-                            border-radius: 10px;">
-                                <ion-card-header style="background:linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); padding-left: 5px; position: absolute; bottom: 0;">
-                                    <ion-card-subtitle style="color:white; font-size:10px; text-align: left; width: 130px;">
+                    <div fxFlex="25" class="flex-container" *ngFor="let request of requests;">
+                        <div class="card-container">
+                            <ion-card class="request-card">
+                                <ion-card-header>
+                                    <ion-card-subtitle>
                                         {{request.name}}
                                     </ion-card-subtitle>
-                                    <ion-card-title style="color:white; font-size: 14px; text-align: left;">
+                                    <ion-card-title>
                                         @{{request.username}}
                                     </ion-card-title>
                                 </ion-card-header>
-                                <img style="height:120px;width:120px; object-fit:cover" src="{{request.image}}">
+                                <img class="request-img" src="{{request.image}}">
                             </ion-card>
-                            <ion-button title="{{request.username}}" (click)='accept_friend($event)' style="width:120px;--background:transparent;transition:1s;--background-hover: #eee;--color-hover:black">ACCEPT</ion-button>
-                            <ion-button title="{{request.username}}" (click)='decline_friend($event)' style="width:120px;--background:transparent;transition:1s;--background-hover: #eee; --color-hover:black;">DECLINE</ion-button>
+                            <ion-button title="{{request.username}}" (click)='accept_friend($event)'>ACCEPT</ion-button>
+                            <ion-button title="{{request.username}}" (click)='decline_friend($event)'>DECLINE</ion-button>
                         </div>
                     </div>
                 </div>
-                <ion-item id="no_friends" lines="none" style="--background:transparent; --ion-item-color:white; text-align: center; font-weight: bold; margin-top:50px;">
+                <ion-item id="no_friends" lines="none">
                     <ion-label>
                         No Friend Requests
                     </ion-label>
                 </ion-item>
             </ion-content>
 
-            <small (click)="checkStats()" style=" position: relative; text-align: left;font-size: 14px; font-weight: bold;">Check Stats</small>
+            <small (click)="checkStats()" class="check-stats">Check Stats</small>
         </div>
     </div>
 </ion-content>

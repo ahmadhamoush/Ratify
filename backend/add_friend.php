@@ -18,25 +18,26 @@ $status = 'Pending'; // default
 //getting post data from app
 $postdata = file_get_contents("php://input");
  if (isset($postdata)) { $request = json_decode($postdata);
-
+ 	//getting to be added user's username
  $toBeAddedUser = strtolower($request); 
 }
 
-
+//getting request with status pending
 $query = $mysqli->prepare('SELECT * FROM friends WHERE friend_one =? AND friend_two =? AND status =?');
 $query->bind_param('sss', $_SESSION['username'], $toBeAddedUser, $status);
 $query->execute();
 $results = $query->get_result();
+//checking if request (exists) is already pending
 if($results->num_rows>0){
   $status ='Already Pending';
   $addFriend['status'] = $status;
   $addFriend = json_encode($addFriend);
   echo $addFriend;
-}else{
+}else{ //creating a new request
 	$query = $mysqli->prepare("INSERT INTO friends (friend_one, friend_two, status) VALUES (?, ?, ?)");
 	$query->bind_param("sss", $_SESSION['username'], $toBeAddedUser, $status);
 	$query->execute();
-
+	//storing request details
 	$addFriend['requester'] = $_SESSION['username'];
   $addFriend['requestee'] = $toBeAddedUser;
   $addFriend['status'] = $status;

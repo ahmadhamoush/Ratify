@@ -14,7 +14,7 @@ export class HomePage {
 
   login() {
     this.route.navigate(['/login']);
-
+    //navigate to login page on click
   }
  
 

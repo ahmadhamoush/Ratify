@@ -11,18 +11,23 @@ import { Router } from '@angular/router';
 })
 
 export class FriendsPage implements OnInit {
-  friends : any[];
+
+  friends : any[]; //where the friends will be stored
+  //where user clicked details will be stored
   username_clicked : string;
   name_clicked : string;
   image_clicked : string;
 
   ionViewWillEnter(){
+    //getting current user's friends
     var nofriends = document.getElementById('nofriends');
     this.user.getFriends().subscribe(response =>{
+      //showing no friends if current user has no friends
       if(response['status'] ==='no friends'){
        nofriends.style.display='block';
        console.log(response);
       }else{
+        //storing friends in array
         nofriends.style.display='none';
         for(let i =0;i<Object.keys.length;i++){
           this.friends = response;
@@ -40,8 +45,10 @@ export class FriendsPage implements OnInit {
   }
 
   friendOptions(){
+    //creating modal displaying optios for selected friend
     this.modalCtrl.create({
       component: FriendOptionsComponent,
+      //storing data in props to be used in this modal
       componentProps : {'username' : this.username_clicked, 'name':this.name_clicked, 'image':this.image_clicked},
       cssClass:'friendOptions',
       swipeToClose:true,
@@ -51,12 +58,14 @@ export class FriendsPage implements OnInit {
     
   }
   option(event){
+    //getting selected user details
     var details = event.srcElement.title.split('?');
     this.username_clicked = details[0];
     this.name_clicked = details[1];
     this.image_clicked = details[2];
     
   }
+  //updating friends list on refresh
   refresh(event){
     var nofriends = document.getElementById('nofriends');
     this.user.getFriends().subscribe(response =>{

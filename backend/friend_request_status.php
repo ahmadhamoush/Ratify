@@ -13,9 +13,9 @@ header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");     
 }
 
-
 $toBeAddedUser = strtolower($_GET['username']); 
 
+//getting request between logged user and toBeAddedUser
 $query = $mysqli->prepare('SELECT * FROM friends WHERE friend_one =? AND friend_two =? OR friend_one =? AND friend_two = ?');
 $query->bind_param('ssss', $_SESSION['username'], $toBeAddedUser, $toBeAddedUser, $_SESSION['username']);
 $query->execute();
@@ -26,7 +26,7 @@ while($response = $results->fetch_assoc()){
 	echo json_encode($request);
 }
 }
-else{
+else{ 
 	$request['status'] = "Not Friends";
 	echo json_encode($request);
 }

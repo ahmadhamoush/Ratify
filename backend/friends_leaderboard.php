@@ -11,7 +11,8 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 86400');  
 header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
-
+    
+    //same as friends api but friends are sorted
     $username = $_SESSION['username'];
     $status = 'Friends';
     $friends_exist = false;
@@ -54,13 +55,14 @@ $results = $query->get_result();
         $user_obj['image'] = $user['image'];
         $user_obj['total_rates'] = $user['total_rates'];
 
-            $user_requests[] = $user_obj;
+            $sorted_friends[] = $user_obj;
 }
-usort($user_requests, function ($friend1, $friend2) {
+//comparing total rates of each friend and sorting them in DESC order (high to low)
+usort($sorted_friends, function ($friend1, $friend2) {
     return $friend2['total_rates'] <=> $friend1['total_rates'];
 });
 
-}  echo json_encode($user_requests); 
+}  echo json_encode($sorted_friends); 
 }
 else{
     $user_details['status'] = 'no friends';

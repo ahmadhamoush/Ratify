@@ -15,6 +15,7 @@ header("Access-Control-Allow-Credentials: true");}
     $username = $_SESSION['username'];
     $status = 'Friends';
     $friends_exist = false;
+    //getting friends
     $query = $mysqli->prepare("SELECT friend_one FROM friends WHERE friend_two = ? AND status =?");
     $query->bind_param('ss', $username, $status);
     $query->execute();
@@ -22,7 +23,6 @@ header("Access-Control-Allow-Credentials: true");}
     if($array->num_rows>0){
         $friends_exist =true;
     }
- 
      while($response = $array->fetch_assoc()){
         $friends_list[] = $response['friend_one'];
     }
@@ -38,26 +38,32 @@ header("Access-Control-Allow-Credentials: true");}
     }
  
 if($friends_exist){
+    //getting friend user's details if friend exists
  for ($i=0; $i < count($friends_list) ; $i++) { 
       $query = $mysqli->prepare("SELECT * FROM users WHERE username = ?");
 $query->bind_param('s', $friends_list[$i]);
 $query->execute(); 
 $results = $query->get_result();
    while($user = $results->fetch_assoc()){
+        //img src
         $src = "uploads/".$user['image'];
+        //getting img
         $image = file_get_contents($src);
+        //img type
         $type = pathinfo($src, PATHINFO_EXTENSION);
+        //converting img to base64
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image); 
+        //storing user details
         $user['image'] = $base64;
         $user_obj['username'] = $user['username'];
         $user_obj['name'] = $user['name'];
         $user_obj['image'] = $user['image'];
 
-
-            $user_requests[] = $user_obj;
+            //storing friends
+            $friends[] = $user_obj;
 }
 
-}  echo json_encode($user_requests); 
+}  echo json_encode($friends); 
 }
 else{
     $user_details['status'] = 'no friends';

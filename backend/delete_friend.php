@@ -21,7 +21,7 @@ $postdata = file_get_contents("php://input");
 
  $toBeRemovedUser = strtolower($request); 
 }
-
+   //removing friend
  $query = $mysqli->prepare("DELETE FROM friends WHERE status = ? AND friend_one = ? AND friend_two = ? OR status = ? AND friend_one = ? AND friend_two = ?");
     $query->bind_param("ssssss", $status, $toBeRemovedUser,$_SESSION['username'],$status, $_SESSION['username'],$toBeRemovedUser);
     $query->execute();

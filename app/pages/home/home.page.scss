@@ -10,10 +10,8 @@
     border-bottom-right-radius: 50% 150px !important;
     overflow: hidden;
     position: absolute;
-    /* Ellipse 1 */
     top: -300px;
     background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
-    /* Ellipse 1 */
     width: 864px;
     height: 680px;
     left: -248px;
@@ -28,18 +26,6 @@
     flex-direction: column;
     justify-content: center;
 }
-
-// .circle {
-//     float: left;
-//     margin-left: 125px;
-//     margin-top: 20px;
-//     width: 200px;
-//     height: 200px;
-//     border-radius: 100%;
-//     overflow: hidden;
-// }
-
-/* People */
 
 .people {
     margin-top: -50%;
@@ -99,9 +85,6 @@
     background: url('/assets/img3.jpg') center;
 }
 
-
-/* Ellipse 10 */
-
 #img4 {
     position: absolute;
     width: 35px;
@@ -118,9 +101,6 @@ div.item-native {
     background: unset !important;
 }
 
-
-/* Ellipse 4 */
-
 #img5 {
     position: absolute;
     width: 35px;
@@ -132,9 +112,6 @@ div.item-native {
     background-size: 160% !important;
     background: url('/assets/img4.webp') center;
 }
-
-
-/* Ellipse 6 */
 
 #img6 {
     position: absolute;
@@ -148,9 +125,6 @@ div.item-native {
     background: url('/assets/img6.jpg') center;
 }
 
-
-/* Ellipse 7 */
-
 #img7 {
     position: absolute;
     width: 35px;
@@ -162,9 +136,6 @@ div.item-native {
     background-size: 160% !important;
     background: url('/assets/img7.jpg') right;
 }
-
-
-/* Ellipse 11 */
 
 #img8 {
     position: absolute;
@@ -178,9 +149,6 @@ div.item-native {
     background: url('/assets/img8.webp') center;
 }
 
-
-/* Ellipse 8 */
-
 #img9 {
     position: absolute;
     width: 35px;
@@ -192,9 +160,6 @@ div.item-native {
     background-size: 160% !important;
     background: url('/assets/img9.jpg') center;
 }
-
-
-/* Ellipse 5 */
 
 #img10 {
     position: absolute;

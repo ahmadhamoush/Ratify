@@ -21,16 +21,17 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
   $query = $mysqli->prepare('ALTER TABLE users ADD name VARCHAR(255) NULL');
   $query->execute();   
 
-
+    //checking if posted name is not empty
    if(isset($_POST['name'])){
     $_POST['name'] = $name; 
    }
 
-   //setting user's name in database
+   //updating user's name in database
    if(isset($name)){
     $query = $mysqli->prepare("UPDATE users SET name = ? WHERE username = ?");
     $query->bind_param("ss", $name, $_SESSION['username']);
     $query->execute();
+    //storing user's details to be sent
     $user_details['name'] =$name;
     $user_details['status'] = 'success';
     $user_details = json_encode($user_details);

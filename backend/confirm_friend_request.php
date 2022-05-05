@@ -21,6 +21,7 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
   }
  
    //updating user's friend request in database
+  //updating friend's status from pending to friends
     if($request_status==='accept'){
     $query = $mysqli->prepare("UPDATE friends SET status = ? WHERE friend_one = ? AND friend_two = ?");
     $query->bind_param("sss", $friends, $requested_friend,$_SESSION['username']);
@@ -30,7 +31,8 @@ $postdata = file_get_contents("php://input"); if (isset($postdata)) { $request =
     $confirm_friend['session_user'] = $_SESSION['username'];
     $confirm_friend = json_encode($confirm_friend);
     echo $confirm_friend;
-}
+}   
+//deleting current request
 else if($request_status==='decline'){
      $query = $mysqli->prepare("DELETE FROM friends WHERE status = ? AND friend_one = ? AND friend_two = ? OR status = ? AND friend_one = ? AND friend_two = ?");
     $query->bind_param("ssssss", $pending, $requested_friend,$_SESSION['username'],$pending, $_SESSION['username'],$requested_friend);

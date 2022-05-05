@@ -16,6 +16,7 @@ export class RatingPage implements OnInit {
     private navParams : NavParams, private toastCtrl : ToastController, private alertCtrl : AlertController,
     private route : Router) { }
 
+    //rating details
     cute : number; 
     cute_bool: boolean[];
     personality : number;
@@ -26,12 +27,15 @@ export class RatingPage implements OnInit {
     social_bool: boolean[];
     friendly: number;
     friendly_bool: boolean[];
+
     fun : number;
     fun_bool: boolean[];
+
+    //rated user details
     rated_user : string;
     rated_name : string;
     rated_image : string;
-
+    //false if user session expires
     logged_in:boolean;
 
   ngOnInit() {
@@ -52,12 +56,14 @@ export class RatingPage implements OnInit {
     this.rated_image = this.navParams.get('image');
   }
    ionViewWillEnter(){
+     //getting user logged in status
     this.user.isLoggedIn()
     .subscribe(data => {
         this.logged_in = data;
     });
     setTimeout(async ()=>{
       if(!this.logged_in){
+        //redirecting user to homepage if session has expired
         this.route.navigate(['home']);
         const toast =  this.toastCtrl.create({
           message : 'Session Expired. Please Login Again',

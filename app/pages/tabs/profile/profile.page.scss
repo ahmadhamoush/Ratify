@@ -43,6 +43,10 @@ ion-item {
     --ion-item-color: #2EA5BF;
 }
 
+.settings-icon {
+    transform: scale(1.2);
+}
+
 .image-container {
     position: absolute;
     top: -75px;
@@ -105,6 +109,70 @@ ion-progress-bar {
     z-index: 2;
 }
 
+.rates {
+    text-align: center;
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    color: white
+}
+
+.rates-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-container {
+    background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    margin-right: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-card {
+    width: 120px;
+    height: 120px;
+    transition: 1s;
+    box-shadow: inset 0px 10px 30px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.8));
+    border-radius: 10px;
+}
+
+.request-card ion-card-header {
+    background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
+    padding-left: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.request-card ion-card-header ion-card-subtitle {
+    color: white;
+    font-size: 10px;
+    text-align: left;
+    width: 130px;
+}
+
+.request-card ion-card-header ion-card-title {
+    color: white;
+    font-size: 14px;
+    text-align: left;
+}
+
+.request-img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover
+}
+
+.total_rates {
+    text-align: center;
+    margin-top: 65px;
+    font-style: italic;
+    --ion-item-background: linear-gradient(180deg, #2EA5BF 0%, #2EA5BF 100%);
+    color: white
+}
+
 .username {
     position: relative;
     top: 48px;
@@ -118,6 +186,17 @@ ion-progress-bar {
     width: 100px;
 }
 
+.check-friends-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .requests::part(scroll) {
     background-color: #2EA5BF;
 }
@@ -129,6 +208,29 @@ ion-button:hover,
 
 .moveUp {
     transform: translateY(-300px);
+}
+
+.check-stats {
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+ion-button {
+    width: 120px;
+    --background: transparent;
+    transition: 1s;
+    --background-hover: #eee;
+    --color-hover: black
+}
+
+#no_friends {
+    --background: transparent;
+    --ion-item-color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
 }
 
 @media (min-width: 500px) {
@@ -146,6 +248,7 @@ ion-button:hover,
 @media (max-width: 375px) {
     .image-container {
         transform: scale(2.8);
+        top: -55px;
     }
     .round-bottom {
         height: 400px;

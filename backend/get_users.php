@@ -16,9 +16,13 @@ header("Access-Control-Allow-Credentials: true");}
     $array = $query->get_result();
     if($array->num_rows>0){
      while($user = $array->fetch_assoc()){
+        //src where image is stored
         $src = "uploads/".$user['image'];
+        //getting img
         $image = file_get_contents($src);
+        //getting img type
         $type = pathinfo($src, PATHINFO_EXTENSION);
+        //converting image to base64
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
         $user['image'] = $base64;
             $user_obj[] = $user;

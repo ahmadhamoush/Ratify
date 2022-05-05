@@ -14,21 +14,23 @@ header("Cache-Control: max-age=86400");
 header("Access-Control-Allow-Credentials: true");}
 
 
-    $username = $_SESSION['username'];
+    $username = $_SESSION['username']; //setting username to session user
+    //getting session user's details
     $query = $mysqli->prepare("SELECT * FROM users WHERE username = ?");
     $query->bind_param("s", $username);
     $query->execute();
     $array = $query->get_result();
     if($array->num_rows>0){
      while($user = $array->fetch_assoc()){
+        //where user image is stored
         $src = "uploads/".$user['image'];
+        //getting user image
         $image = file_get_contents($src);
+        //getting image type
         $type = pathinfo($src, PATHINFO_EXTENSION);
-        // $mimetype = mime_content_type($src);
-        // // header('Content-Type: '.$mimetype);
-        // header("Content-Length: " . strlen($image));
-        // readfile($src);
+        //converting image to base64
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($image);
+        //storing user details to be echoed
         $user_details['username'] = $user['username'];
         $user_details['name'] = $user['name'];
         $user_details['image'] = $base64;
@@ -38,6 +40,7 @@ header("Access-Control-Allow-Credentials: true");}
 }
 }
 else{
+    //if no user with current username was found
     $user_details['user'] = 'not found';
     echo json_encode($user_details);
   

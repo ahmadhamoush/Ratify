@@ -35,7 +35,7 @@ $query = $mysqli->prepare('SELECT user_id, rated_by FROM rates WHERE user_id =? 
   $query = $mysqli->prepare('INSERT INTO rates (user_id, cute, personality, hot, social, friendly, fun, rated_by) VALUES (?, ?, ?, ?, ?, ?,?,?)');
   $query->bind_param('ssssssss', $rated_user,$cute, $personality, $hot, $social, $friendly, $fun, $_SESSION['username']);
   $query->execute(); 
-
+    //storing rate details to be sent
     $rates['cute'] =$cute;
     $rates['personality'] =$personality;
     $rates['hot'] =$hot;
@@ -49,6 +49,7 @@ $query = $mysqli->prepare('SELECT user_id, rated_by FROM rates WHERE user_id =? 
     echo $rates;
 }
 else{
+  //if user has already been rated by current user
   $rates['status'] = 'You have already rated @';
   $rates = json_encode($rates);
     echo $rates;

@@ -54,6 +54,7 @@ $postdata = file_get_contents("php://input");
 	$query = $mysqli->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
 	$query->bind_param("sss", $username, $email, $hashed_pass);
 	$query->execute();
+  //storing user details
 	$user_details['username'] = $username;
 	$user_details['email'] = $email;
 	$user_details['password'] = $hashed_pass;

@@ -13,10 +13,11 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./settings-modal.page.scss'],
 })
 export class SettingsModalPage implements OnInit {
-
+  //current user information
   username : string;
   name : string;
   old_pass : string;
+  //new user information
   new_pass : string;
   user_name : string;
 
@@ -25,13 +26,16 @@ export class SettingsModalPage implements OnInit {
     private toastCtrl :ToastController) { }
  
   ngOnInit() {
+    //getting currect user username
      this.user.getUsername().subscribe(data =>{
       this.user_name =data;
      })
   }
+  //closing modal on click
   close(){
     this.modalCtrl.dismiss();
   }
+  //toast function that will be used on each option and will show a dynamic message and color based on option
   async toast(message, color){
     const toast = this.toastCtrl.create({
       message : message,
@@ -41,7 +45,7 @@ export class SettingsModalPage implements OnInit {
     (await toast).present();
   }
   
-
+  //showing input based on option clicked
   showUserInput(){
     var user_input = document.getElementById('username_input');
     user_input.classList.toggle('hide');
@@ -55,6 +59,7 @@ export class SettingsModalPage implements OnInit {
     name_input.classList.toggle('hide');
   }
 
+  //updating name
   updateName(){
    var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
@@ -65,6 +70,7 @@ export class SettingsModalPage implements OnInit {
 
   }
   
+  //updating username
   updateUsername(){
     var headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');
@@ -81,6 +87,7 @@ export class SettingsModalPage implements OnInit {
   
 }
 
+//updating password
 updatePassword(){
   var headers = new HttpHeaders();
    headers.append('Access-Control-Allow-Origin', '*');
@@ -100,6 +107,7 @@ updatePassword(){
   });
 }
 
+//logging out
 async logout(){
   let alert = this.alertCtrl.create({
     header: 'Logout',
@@ -130,6 +138,7 @@ async logout(){
   
 }
 
+//deleting account
 async delete(){
   let alert = this.alertCtrl.create({
     header: 'Delete Account',
