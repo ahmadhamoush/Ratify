@@ -20,4 +20,4 @@
 
 # Overview
 - Ratify is an app where people rate and get rated anonymously!
-<img style='width:100px;height:100px' src="https://res.cloudinary.com/pcrs/image/upload/v1651787835/ratify_ktyvgv.png" alt="Alt text" title="Optional title">
+<img style='width:300px;height:300px' src="https://res.cloudinary.com/pcrs/image/upload/v1651787835/ratify_ktyvgv.png" alt="Alt text" title="Optional title">
