@@ -24,15 +24,10 @@
 # Design
 
 <img src="Design/1.png" width="300px" height = "600px"><img src="Design/2.png" width="300px" height = "600px">
-<img src="Design/3.png" width="300px" height = "600px">
-<img src="Design/4.png" width="300px" height = "600px">
-<img src="Design/5.png" width="300px" height = "600px">
-<img src="Design/6.png" width="300px" height = "600px">
-<img src="Design/7.png" width="300px" height = "600px">
-<img src="Design/8.png" width="300px" height = "600px">
-<img src="Design/9.png" width="300px" height = "600px">
-<img src="Design/10.png" width="300px" height = 600px">
-<img src="Design/11.png" width="300px" height = "600px">
-<img src="Design/12.png" width="300px" height = "600px">
+<img src="Design/3.png" width="300px" height = "600px"><img src="Design/4.png" width="300px" height = "600px">
+<img src="Design/5.png" width="300px" height = "600px"><img src="Design/6.png" width="300px" height = "600px">
+<img src="Design/7.png" width="300px" height = "600px"><img src="Design/8.png" width="300px" height = "600px">
+<img src="Design/9.png" width="300px" height = "600px"><img src="Design/10.png" width="300px" height = 600px">
+<img src="Design/11.png" width="300px" height = "600px"><img src="Design/12.png" width="300px" height = "600px">
 <img src="Design/13.png" width="300px" height = "600px">
 
