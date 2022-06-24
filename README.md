@@ -20,3 +20,20 @@
 
 # Overview
 - Ratify is an app where people rate and get rated anonymously!
+
+# Design
+
+!(/design/1.png)
+!(/design/2.png)
+!(/design/3.png)
+!(/design/4.png)
+!(/design/5.png)
+!(/design/6.png)
+!(/design/7.png)
+!(/design/8.png)
+!(/design/9.png)
+!(/design/10.png)
+!(/design/11.png)
+!(/design/12.png)
+!(/design/13.png)
+
