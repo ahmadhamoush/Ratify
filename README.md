@@ -23,7 +23,7 @@
 
 # Design
 
-![alt text](Design/1.png = 250x250)
+<img src="Design/2.png" width="48" height = "80">
 ![alt text](Design/2.png)
 ![alt text](Design/3.png)
 ![alt text](Design/4.png)
