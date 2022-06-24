@@ -23,17 +23,17 @@
 
 # Design
 
-<img src="Design/2.png" width="48" height = "80">
-![alt text](Design/2.png)
-![alt text](Design/3.png)
-![alt text](Design/4.png)
-![alt text](Design/5.png)
-![alt text](Design/6.png)
-![alt text](Design/7.png)
-![alt text](Design/8.png)
-![alt text](Design/9.png)
-![alt text](Design/10.png)
-![alt text](Design/11.png)
-![alt text](Design/12.png)
-![alt text](Design/13.png)
+<img src="Design/1.png" width="100px" height = "200px">
+<img src="Design/2.png" width="100px" height = "200px">
+<img src="Design/3.png" width="100px" height = "200px">
+<img src="Design/4.png" width="100px" height = "200px">
+<img src="Design/5.png" width="100px" height = "200px">
+<img src="Design/6.png" width="100px" height = "200px">
+<img src="Design/7.png" width="100px" height = "200px">
+<img src="Design/8.png" width="100px" height = "200px">
+<img src="Design/9.png" width="100px" height = "200px">
+<img src="Design/10.png" width="100px" height = "200px">
+<img src="Design/11.png" width="100px" height = "200px">
+<img src="Design/12.png" width="100px" height = "200px">
+<img src="Design/13.png" width="100px" height = "200px">
 
