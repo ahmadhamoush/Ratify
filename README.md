@@ -23,7 +23,7 @@
 
 # Design
 
-![alt text](Design/1.png)
+![alt text](Design/1.png {width=40px height=200px})
 ![alt text](Design/2.png)
 ![alt text](Design/3.png)
 ![alt text](Design/4.png)
