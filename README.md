@@ -5,6 +5,14 @@
 -  run ionic serve command
 -  install @angular/cli
 
+# Developemnt
+* HTML
+* CSS 
+* JavaScript 
+* Angular
+* PHP
+* SQL
+
 # Database 
 - You will find the database content in the database folder 
 - Copy the SQL statements
