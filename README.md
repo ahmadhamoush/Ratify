@@ -1,4 +1,4 @@
-# Ratify
+# Ratify (Ionic Framework)
 
 # Installation 
 -  Clone Repository
